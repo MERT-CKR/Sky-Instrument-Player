@@ -122,6 +122,13 @@ def countDown():
     print(2)
     time.sleep(1)
     print(1)
+    
+# Oluşturmak istediğiniz klasörün yolu
+directory = os.path.join(current_dir,"New Sheets")
+
+# Klasörü oluşturma
+if not os.path.exists(directory):
+    os.makedirs(directory)
 
 # Müzikleri doğru formata çevir
 file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
@@ -164,7 +171,7 @@ def bring():
     ShowList()
     selection = int(input("Müziği seçin\n>> "))
     if selection > max(Sheet_dict) or selection <=0:
-        print("Lütfen sadece listede olan sayılardan seçin")
+        print("Lütfen sadece listede olan sayılardan seçin")#çeviri ekle
         bring()
     else:
         selcted_music = Sheet_dict[selection]
