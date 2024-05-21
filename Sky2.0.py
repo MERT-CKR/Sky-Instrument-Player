@@ -4,7 +4,60 @@ import pandas as pd
 import os
 import json
 
+with open("settings.json", "r", encoding="utf-8") as file:
+    data = json.load(file)
+
 current_dir = os.getcwd()
+jsonFilePath = os.path.join(current_dir,"translations.json")
+
+def load_translations():
+    if data["settings"][0]["firstTime"] == 0 or data["settings"][0]["language"]=="":
+        print("Select your language: \n1.Türkçe \n2.English")
+        lang = int(input("\n>> "))
+        if lang == 1:
+            user_locale = "tr"
+        elif lang == 2:
+            user_locale = "en"
+
+        data["settings"][0]["language"] = user_locale
+
+        with open('settings.json', 'w', encoding="utf-8") as dosya:
+            json.dump(data, dosya, indent=4,ensure_ascii=False)
+    else:
+        user_locale = data["settings"][0]["language"]
+
+
+    with open(jsonFilePath, 'r', encoding='utf-8') as f:
+        translations = json.load(f)
+
+    global _
+    _ = lambda key: translations['languages'][key][user_locale]
+
+load_translations()
+
+with open("settings.json", "w", encoding="utf-8") as file:
+    json.dump(data, file, indent=4, ensure_ascii=False)
+
+print(_("key_assigned"))
+key =  data["settings"][0]["keys"]
+key = key.split()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def normalizeJson(Fname):
     Fpath = os.path.join(current_dir, "New Sheets", Fname)
@@ -37,7 +90,7 @@ def normalizeJson(Fname):
                 merged_data[time] = []
             merged_data[time].append(key)
         else:
-            raise KeyError('Her item "time" ve "key" anahtarlarına sahip olmalıdır.')
+            raise KeyError(_('Her item "time" ve "key" anahtarlarına sahip olmalıdır.'))
 
     # Sonuçları birleştirilmiş formata çevirme
     result = [{'time': time, 'key': ','.join(keys)} for time, keys in merged_data.items()]
@@ -48,7 +101,7 @@ def normalizeJson(Fname):
     
     
 def countDown():
-    print("starting")
+    print(_("starting"))
     time.sleep(1)
     print(4)
     time.sleep(1)

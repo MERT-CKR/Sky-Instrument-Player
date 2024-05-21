@@ -1,0 +1,16 @@
+{
+  "languages": {
+    "key_error1":{
+      "tr":"Her item 'time' ve 'key' anahtarlarına sahip olmalıdır.",
+      "en":"all items need 'time and 'key' wrong format"
+    },
+    "starting": {
+      "tr": "başlıyor.",
+      "en": "starting."
+    },
+    "key_assigned": {
+      "tr": "tuşlar atandı",
+      "en": "key assigned"
+    }
+  }
+}
