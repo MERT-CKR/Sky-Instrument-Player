@@ -37,7 +37,7 @@ def load_translations():
 
 load_translations()
 
-
+# settings.json'u güncelle
 if data["settings"][0]["firstTime"] == 1:
     pass
 else:
@@ -108,7 +108,7 @@ def normalizeJson(Fname):
     result = [{'time': time, 'key': ','.join(keys)} for time, keys in merged_data.items()]
 
     # Sonucu JSON dosyasına yazma
-    with open(os.path.join(current_dir, "Sheets", f'0{Fname}'), 'w', encoding="UTF-8") as f:
+    with open(os.path.join(current_dir, "Sheets", Fname), 'w', encoding="UTF-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
     
     
