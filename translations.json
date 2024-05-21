@@ -1,8 +1,13 @@
 {
-  "languages": {
+  "translations": {
+
     "key_error1":{
       "tr":"Her item 'time' ve 'key' anahtarlarına sahip olmalıdır.",
       "en":"all items need 'time and 'key' wrong format"
+    },
+    "tutorial1": {
+      "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz.",
+      "en": "When you equip your instrument in Sky, enter the letters on the buttons here in order."
     },
     "starting": {
       "tr": "başlıyor.",
@@ -11,6 +16,14 @@
     "key_assigned": {
       "tr": "tuşlar atandı",
       "en": "key assigned"
+    },
+    "loop_ending": {
+      "tr": "işlem durduruldu",
+      "en": "operation is stopped"
+    },
+    "first_opening": {
+      "tr": "ilk açılış",
+      "en": "first opening"
     }
   }
 }

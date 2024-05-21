@@ -4,11 +4,13 @@ import pandas as pd
 import os
 import json
 
+
+
 with open("settings.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
 current_dir = os.getcwd()
-jsonFilePath = os.path.join(current_dir,"translations.json")
+translations_Path = os.path.join(current_dir,"translations.json")
 
 def load_translations():
     if data["settings"][0]["firstTime"] == 0 or data["settings"][0]["language"]=="":
@@ -27,13 +29,36 @@ def load_translations():
         user_locale = data["settings"][0]["language"]
 
 
-    with open(jsonFilePath, 'r', encoding='utf-8') as f:
+    with open(translations_Path, 'r', encoding='utf-8') as f:
         translations = json.load(f)
 
     global _
-    _ = lambda key: translations['languages'][key][user_locale]
+    _ = lambda key: translations['translations'][key][user_locale]
 
 load_translations()
+
+
+if data["settings"][0]["firstTime"] == 1:
+    pass
+else:
+    print(_("first_opening"))
+
+    data["settings"][0]["firstTime"] = 1
+
+    print(_("tutorial1"))
+    # print(_("tutorial2"))
+    # print(_("tutorial3"))
+    # print(_("tutorial4"))
+
+    newKeys = input(">> ")
+    newKeys = newKeys.replace(",", " ")
+
+    if newKeys == "":
+        data["settings"][0]["keys"] = data["settings"][0]["Default_keys"]
+    else:
+        data["settings"][0]["keys"] = newKeys
+
+
 
 with open("settings.json", "w", encoding="utf-8") as file:
     json.dump(data, file, indent=4, ensure_ascii=False)
@@ -46,22 +71,9 @@ key = key.split()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 def normalizeJson(Fname):
     Fpath = os.path.join(current_dir, "New Sheets", Fname)
-    print(Fpath)
+    
     # JSON dosyasını okuma
     with open(Fpath, 'r') as f:
         data = json.load(f)
@@ -90,7 +102,7 @@ def normalizeJson(Fname):
                 merged_data[time] = []
             merged_data[time].append(key)
         else:
-            raise KeyError(_('Her item "time" ve "key" anahtarlarına sahip olmalıdır.'))
+            raise KeyError(_('key_error1'))
 
     # Sonuçları birleştirilmiş formata çevirme
     result = [{'time': time, 'key': ','.join(keys)} for time, keys in merged_data.items()]
@@ -129,6 +141,7 @@ file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
 for file in file_list:
     if file.endswith(".json"):
         normalizeJson(file)
+        
         # clearing
         clr_list = os.listdir(os.path.join(current_dir, "New Sheets"))
         for i in clr_list:
@@ -150,7 +163,7 @@ def bring():
     global selcted_music
     ShowList()
     selection = int(input("Müziği seçin\n>> "))
-    if selection > max(Sheet_dict):
+    if selection > max(Sheet_dict) or selection <=0:
         print("Lütfen sadece listede olan sayılardan seçin")
         bring()
     else:
@@ -160,62 +173,62 @@ bring()
 filepath = os.path.join(current_dir, "Sheets", selcted_music + ".json")
 df1 = pd.read_json(filepath)
 
-def Timer(function="return-time"):
+def Timer(function="return-timer"):
     global salise
     global now
     global adjustment
     if function == "start":
         now = time.time()
         salise = int((now - int(now)) * 1000) 
-        # adjustment = -2000  # -0.10 saniye başlangıç gecikmesi
+        
     else:
         elapsed_time = time.time() - now 
         return salise + int(elapsed_time * 1000) 
 
 SheetKeys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
-key = ["q", "w", "e", "r", "t", "a", "s", "d", "f", "g", "z", "x", "c", "v", "b",][::-1]#Sky Website
-#key = ["y", "u", "ı", "o", "p", "h", "j", "k", "l", "ş", "n", "m", "ö", "ç", "b",][::-1]#TR keyboard
-key =("y u ı o p h j k l ş n m ö ç b").split(" ")[::-1]
+key = key[::-1]
+
+
 def playMusic():
     countDown()
     global df1
-    Timer("start")  # Zamanı başlat
     
+    Timer("start") 
     for t in range(len(df1["time"])):
         note_time = df1["time"][t]
-        current_time = Timer()  # Geçerli zamanı al
+        current_time = Timer()  # wait timer
         
-        while current_time < note_time:  # Zamanı bekleyerek, notanın zamanına kadar döngüde kal
+        while current_time < note_time:  # nota zamanı gelene kadar bekle
             current_time = Timer()
 
         if keyboard.is_pressed('"'):
-            print("loop_ending")
+            print(_("loop_ending"))
             break
         
-        notes = df1["key"][t].split(",")  # Notaları virgülle ayırarak al
-        notes_to_press = []  # Basılacak notaları bir listede topla
+        notes = df1["key"][t].split(",")
+        notes_to_press = [] 
         for note in notes:
-            pressed_keys = note.split(" ")  # Her nota içindeki karakterleri ayır
+            pressed_keys = note.split(" ")
             for char in pressed_keys:
                 char=char.replace("2Key","1Key").replace("3Key","1Key")
-                char = char.strip()  # İşaretleri kaldır
-                if char in SheetKeys:  # Eğer karakter SheetKeys içindeyse
-                    index = SheetKeys.index(char)  # Karakterin indeksini al
+                char = char.strip()
+                if char in SheetKeys:
+                    index = SheetKeys.index(char)
                     key_to_press = key[index]  # İlgili indeksteki tuşu belirle
                     notes_to_press.append(key_to_press)  # Basılacak notaları listeye ekle
                 else:
                     print("geçersiz karakter:", char)
-        # Basılacak notaları aynı anda bas
+        # aynı anda Basılacak notaları aynı anda bas
         for key_to_press in notes_to_press:
             keyboard.press(key_to_press)
         print(notes_to_press)
-        time.sleep(0.1)  # Küçük bir bekleme
+        time.sleep(0.15)  # Küçük bir bekleme
         # Basılan notaları serbest bırak
         for key_to_press in notes_to_press:
             keyboard.release(key_to_press)
 
         if keyboard.is_pressed('"'):
-            print("loop_ending")
+            print(_("loop_ending"))
             break
 
 playMusic()
