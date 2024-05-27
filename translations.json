@@ -1,29 +1,53 @@
 {
   "translations": {
-
     "key_error1":{
       "tr":"Her item 'time' ve 'key' anahtarlarına sahip olmalıdır.",
-      "en":"all items need 'time and 'key' wrong format"
+      "en":"all items need 'time' and 'key', wrong format"
     },
     "tutorial1": {
       "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz.",
       "en": "When you equip your instrument in Sky, enter the letters on the buttons here in order."
     },
+    "tutorial2": {
+      "tr": "example format:\nq w e r t a s d f g z x c v b",
+      "en": "örnek format:\nq w e r t a s d f g z x c v b"
+    },
     "starting": {
-      "tr": "başlıyor.",
-      "en": "starting."
+      "tr": "başlıyor...",
+      "en": "starting..."
     },
     "key_assigned": {
-      "tr": "tuşlar atandı",
-      "en": "key assigned"
+      "tr": "Tuşlar atandı\n",
+      "en": "keys assigned\n"
     },
     "loop_ending": {
-      "tr": "işlem durduruldu",
-      "en": "operation is stopped"
+      "tr": " \" tuşuna basıldı işlem durduruldu",
+      "en": " \" key is pressed operation is stopped"
     },
     "first_opening": {
-      "tr": "ilk açılış",
-      "en": "first opening"
+      "tr": "ilk açılış algılandı",
+      "en": "First opening detected"
+    },
+    "unknown_format": {
+      "tr": "* için hata: JSON dosyası beklenilen formatta değil!",
+      "en": "Error for *: JSON dosyası beklenilen formatta değil!"
+    },
+    "unknown_format2": {
+      "tr": "* için hata: 'songNotes' anahtarı JSON dosyasında bulunamadı, yanlış veya hatalı dosya olabilir!!",
+      "en": "Error for * : There aren't 'songNotes' key in json file. Invalid file content!!"
+    },
+    "choose music": {
+      "tr": "Listeden bir Müzik seçin:",
+      "en": "Choose music from list:"
+    },
+    "choose_in_list": {
+      "tr": "\nLütfen sadece listede olan sayılardan seçin!!",
+      "en": "\nPlease only select numbers from the list!!"
+    },
+    "invalidChar": {
+      "tr": "Geçersiz karakter: *!!",
+      "en": "Invalid character: *!!"
     }
+
   }
 }

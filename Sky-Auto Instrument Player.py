@@ -46,7 +46,7 @@ else:
     data["settings"][0]["firstTime"] = 1
 
     print(_("tutorial1"))
-    # print(_("tutorial2"))
+    print(_("tutorial2"))
     # print(_("tutorial3"))
     # print(_("tutorial4"))
 
@@ -82,12 +82,16 @@ def normalizeJson(Fname):
     if len(data) > 0 and isinstance(data[0], dict):
         song_data = data[0]
     else:
-        raise ValueError(f'{Fname} için hata: JSON dosyası beklenilen formatta değil.')
+        ErrMsg = _("unknown_format")
+        ErrMsg=ErrMsg.replace("*",Fname)
+        raise ValueError(ErrMsg)
 
     # "songNotes" anahtarını doğrulama
     if "songNotes" in song_data:
         song_notes = song_data["songNotes"]
     else:
+        ErrMsg = _("unknown_format2")
+        ErrMsg=ErrMsg.replace("*",Fname)
         raise KeyError(f'{Fname} için hata: "songNotes" anahtarı JSON dosyasında bulunamadı.')
 
     # Birleştirilmiş veriyi tutacak sözlük
@@ -169,9 +173,10 @@ def ShowList():
 def bring():
     global selcted_music
     ShowList()
-    selection = int(input("Müziği seçin\n>> "))
+    print(_("choose music"))
+    selection = int(input(">> "))
     if selection > max(Sheet_dict) or selection <=0:
-        print("Lütfen sadece listede olan sayılardan seçin")#çeviri ekle
+        print(_("choose_in_list"))#çeviri ekle
         bring()
     else:
         selcted_music = Sheet_dict[selection]
@@ -224,7 +229,10 @@ def playMusic():
                     key_to_press = key[index]  # İlgili indeksteki tuşu belirle
                     notes_to_press.append(key_to_press)  # Basılacak notaları listeye ekle
                 else:
-                    print("geçersiz karakter:", char)
+                    invalidChar=_("invalidChar")
+                    invalidChar=invalidChar.replace("*",char)
+                    
+                    print(invalidChar)
         # aynı anda Basılacak notaları aynı anda bas
         for key_to_press in notes_to_press:
             keyboard.press(key_to_press)
