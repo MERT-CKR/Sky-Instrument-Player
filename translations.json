@@ -49,8 +49,8 @@
       "en": "Invalid character!!: *"
     },
     "restart": {
-      "tr": "Programdan çıkmak için 0'a basın:\nDevam Etmek için ise herhangi bir tuşa basın\n",
-      "en": "Press 1 to exit the program \nPress any key to continue\n"
+      "tr": "Programdan çıkmak için 0'a basın:\nDevam Etmek için ise Enter'e basın\n",
+      "en": "Press 1 to exit the program \nPress Enter to continue\n"
     },
     "length_err":{
       "tr":"Boşluklarla ayrılmış şekilde 15 karakter girmelisin",

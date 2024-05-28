@@ -3,6 +3,7 @@ import keyboard
 import pandas as pd
 import os
 import json
+import os
 
 
 
@@ -143,20 +144,6 @@ def normalizeJson(Fname):
     with open(os.path.join(current_dir, "Sheets", Fname), 'w', encoding="UTF-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
     
-    
-def countDown():
-    print(_("starting"))
-    time.sleep(1)
-    print(4)
-    time.sleep(1)
-    print(3)
-    time.sleep(1)
-    print(2)
-    time.sleep(1)
-    print(1)
-    
-
-
 
 
 # Convert music to the correct format
@@ -183,13 +170,23 @@ for file in file_list:
         for i in clr_list:
             os.remove(os.path.join(current_dir, "New Sheets", i))
             
-            
+def countDown():
+    print(_("starting"))
+    time.sleep(1)
+    print(4)
+    time.sleep(1)
+    print(3)
+    time.sleep(1)
+    print(2)
+    time.sleep(1)
+    print(1)
+        
 
 def Timer(function="return-timer"):
     global salise
     global now
     if function == "start":
-        now = time.time()+1
+        now = time.time()
         salise = int((now - int(now)) * 1000) 
         
     else:
@@ -202,10 +199,14 @@ def playMusic():
     df1 = pd.read_json(filepath)
     
     countDown()
-    Timer("start") 
+    
+    firstTime=0
     for t in range(len(df1["time"])):
         note_time = df1["time"][t]
-        current_time = Timer()  
+        if firstTime == 0:
+            Timer("start") 
+        firstTime=1
+        current_time = Timer()
         
         while current_time < note_time:  # wait for correct time
             current_time = Timer()
