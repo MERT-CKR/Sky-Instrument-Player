@@ -3,7 +3,7 @@ import keyboard
 import pandas as pd
 import os
 import json
-
+import os
 
 
 
@@ -12,6 +12,15 @@ with open("settings.json", "r", encoding="utf-8") as file:
 
 current_dir = os.getcwd()
 translations_Path = os.path.join(current_dir,"translations.json")
+
+
+
+# create path of New Sheets
+directory = os.path.join(current_dir,"New Sheets")
+
+# create folder
+if not os.path.exists(directory):
+    os.makedirs(directory)
 
 def load_translations():
     global user_locale
@@ -47,7 +56,7 @@ def update_settings():
     global data
     global newKeys
     global key
-    # settings.json'u güncelle
+    
     if data["settings"][0]["firstTime"] == 1:
         pass
     else:
@@ -64,7 +73,7 @@ def update_settings():
                 print(_("dot_comma_error"))
                 update_settings()
             if keyx in unwanted_chars:
-                invChar= _("invalidChar").replace("*",keyx)
+                invChar= _("invalid_char").replace("*",keyx)
                 print(invChar)
                 update_settings()
             elif len(newKeys) !=29:
@@ -88,16 +97,17 @@ def update_settings():
 
 update_settings()
 
-
+SheetKeys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
+key = key[::-1]
 
 def normalizeJson(Fname):
     Fpath = os.path.join(current_dir, "New Sheets", Fname)
     
-    # JSON dosyasını okuma
+    # read JSON file
     with open(Fpath, 'r') as f:
         data = json.load(f)
     
-    # JSON dosyasının ilk öğesini alma
+    # Getting first element of JSON file
     if len(data) > 0 and isinstance(data[0], dict):
         song_data = data[0]
     else:
@@ -105,7 +115,7 @@ def normalizeJson(Fname):
         ErrMsg=ErrMsg.replace("*",Fname)
         raise ValueError(ErrMsg)
 
-    # "songNotes" anahtarını doğrulama
+    # validation of "songNotes" key
     if "songNotes" in song_data:
         song_notes = song_data["songNotes"]
     else:
@@ -113,10 +123,10 @@ def normalizeJson(Fname):
         ErrMsg=ErrMsg.replace("*",Fname)
         raise KeyError(ErrMsg)
 
-    # Birleştirilmiş veriyi tutacak sözlük
+    #Dictionary to hold merged data
     merged_data = {}
 
-    # Verileri işleme
+    # Processing data
     for item in song_notes:
         if 'time' in item and 'key' in item:
             time = item['time']
@@ -127,10 +137,10 @@ def normalizeJson(Fname):
         else:
             raise KeyError(_('key_error1'))
 
-    # Sonuçları birleştirilmiş formata çevirme
+    # Converting results to merged format
     result = [{'time': time, 'key': ','.join(keys)} for time, keys in merged_data.items()]
 
-    # Sonucu JSON dosyasına yazma
+    # write json file
     with open(os.path.join(current_dir, "Sheets", Fname), 'w', encoding="UTF-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
     
@@ -146,14 +156,11 @@ def countDown():
     time.sleep(1)
     print(1)
     
-# Oluşturmak istediğiniz klasörün yolu
-directory = os.path.join(current_dir,"New Sheets")
 
-# Klasörü oluşturma
-if not os.path.exists(directory):
-    os.makedirs(directory)
 
-# Müzikleri doğru formata çevir
+
+
+# Convert music to the correct format
 file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
 for file in file_list:
     if file.endswith(".txt"):
@@ -166,16 +173,79 @@ for file in file_list:
         except Exception as e:
             pass
 
-# Dosyayı daha okunabilir yap
+# Make the file more readable
 file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
 for file in file_list:
     if file.endswith(".json"):
         normalizeJson(file)
         
-        # clearing
+        # clearing old note format file
         clr_list = os.listdir(os.path.join(current_dir, "New Sheets"))
         for i in clr_list:
             os.remove(os.path.join(current_dir, "New Sheets", i))
+            
+            
+
+def Timer(function="return-timer"):
+    global salise
+    global now
+    if function == "start":
+        now = time.time()+1
+        salise = int((now - int(now)) * 1000) 
+        
+    else:
+        elapsed_time = time.time() - now 
+        return salise + int(elapsed_time * 1000) 
+            
+def playMusic():
+    global df1
+    filepath = os.path.join(current_dir, "Sheets", selcted_music + ".json")
+    df1 = pd.read_json(filepath)
+    
+    countDown()
+    Timer("start") 
+    for t in range(len(df1["time"])):
+        note_time = df1["time"][t]
+        current_time = Timer()  
+        
+        while current_time < note_time:  # wait for correct time
+            current_time = Timer()
+
+        if keyboard.is_pressed('"'):
+            print(_("loop_ending"))
+            break
+        
+        notes = df1["key"][t].split(",")
+        notes_to_press = []
+        for note in notes:
+            pressed_keys = note.split(" ")
+            for char in pressed_keys:
+                char=char.replace("2Key","1Key").replace("3Key","1Key")
+                char = char.strip()
+                if char in SheetKeys:
+                    index = SheetKeys.index(char)
+                    key_to_press = key[index]  # Determine the key in the relevant index
+                    notes_to_press.append(key_to_press)  # add notes to list
+                else:
+                    invalidChar=_("invalid_char")
+                    invalidChar=invalidChar.replace("*",char)
+                    print(invalidChar)
+                    
+        # Notes to be played simultaneously
+        for key_to_press in notes_to_press:
+            keyboard.press(key_to_press)
+        print(notes_to_press)
+        time.sleep(0.05)  # tuşlar arası bekleme.
+        # Basılan notaları serbest bırak
+        for key_to_press in notes_to_press:
+            keyboard.release(key_to_press)
+
+        if keyboard.is_pressed('"'):
+            print(_("loop_ending"))
+            break
+
+
+
 
 Sheet_dict = {}
 
@@ -192,7 +262,7 @@ def ShowList():
 def bring():
     global selcted_music
     global selection
-    print(_("choose music"))
+    print(_("choose_music"))
     ShowList()
     
     err=0
@@ -210,70 +280,23 @@ def bring():
         bring()
     else:
         selcted_music = Sheet_dict[selection]
-bring()
+        playMusic()
 
-filepath = os.path.join(current_dir, "Sheets", selcted_music + ".json")
-df1 = pd.read_json(filepath)
 
-def Timer(function="return-timer"):
-    global salise
-    global now
-    if function == "start":
-        now = time.time()+1
-        salise = int((now - int(now)) * 1000) 
-        
+
+while True:
+    bring()
+    print(_("restart"))
+    keepContinue = input(">> ")
+    if keepContinue == "0":
+        break
     else:
-        elapsed_time = time.time() - now 
-        return salise + int(elapsed_time * 1000) 
-
-SheetKeys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
-key = key[::-1]
+        continue
 
 
-def playMusic():
-    countDown()
-    global df1
-    
-    Timer("start") 
-    for t in range(len(df1["time"])):
-        note_time = df1["time"][t]
-        current_time = Timer()  # wait timer
-        
-        while current_time < note_time:  # nota zamanı gelene kadar bekle
-            current_time = Timer()
 
-        if keyboard.is_pressed('"'):
-            print(_("loop_ending"))
-            break
-        
-        notes = df1["key"][t].split(",")
-        notes_to_press = []
-        for note in notes:
-            pressed_keys = note.split(" ")
-            for char in pressed_keys:
-                char=char.replace("2Key","1Key").replace("3Key","1Key")
-                char = char.strip()
-                if char in SheetKeys:
-                    index = SheetKeys.index(char)
-                    key_to_press = key[index]  # İlgili indeksteki tuşu belirle
-                    notes_to_press.append(key_to_press)  # Basılacak notaları listeye ekle
-                else:
-                    invalidChar=_("invalidChar")
-                    invalidChar=invalidChar.replace("*",char)
-                    
-                    print(invalidChar)
-        # aynı anda Basılacak notaları aynı anda bas
-        for key_to_press in notes_to_press:
-            keyboard.press(key_to_press)
-        print(notes_to_press)
-        time.sleep(0.05)  # Küçük bir bekleme
-        # Basılan notaları serbest bırak
-        for key_to_press in notes_to_press:
-            keyboard.release(key_to_press)
 
-        if keyboard.is_pressed('"'):
-            print(_("loop_ending"))
-            break
 
-playMusic()
+
+
 

@@ -21,8 +21,8 @@
       "en": "keys assigned\n"
     },
     "loop_ending": {
-      "tr": " \" tuşuna basıldı işlem durduruldu",
-      "en": " \" key is pressed operation is stopped"
+      "tr": " \" tuşuna basıldı işlem durduruldu\n",
+      "en": " \" key is pressed operation is stopped\n"
     },
     "first_opening": {
       "tr": "ilk açılış algılandı",
@@ -36,7 +36,7 @@
       "tr": "* için hata: 'songNotes' anahtarı JSON dosyasında bulunamadı, yanlış veya hatalı dosya olabilir!!",
       "en": "Error for * : There aren't 'songNotes' key in json file. Invalid file content!!"
     },
-    "choose music": {
+    "choose_music": {
       "tr": "Listeden bir Müzik seçin:",
       "en": "Choose music from list:"
     },
@@ -44,13 +44,13 @@
       "tr": "\nLütfen sadece listede olan sayılardan seçin!! \n",
       "en": "\nPlease only select numbers from the list!! \n"
     },
-    "invalidChar": {
+    "invalid_char": {
       "tr": "Geçersiz karakter!!: *",
       "en": "Invalid character!!: *"
     },
     "restart": {
-      "tr": "Programı yeniden başlatmak için 1'e basın:\nÇıkmak için ise herhangi bir tuşa basın\n",
-      "en": "Press 1 to restart the program \nPress any key to exit\n"
+      "tr": "Programdan çıkmak için 0'a basın:\nDevam Etmek için ise herhangi bir tuşa basın\n",
+      "en": "Press 1 to exit the program \nPress any key to continue\n"
     },
     "length_err":{
       "tr":"Boşluklarla ayrılmış şekilde 15 karakter girmelisin",
