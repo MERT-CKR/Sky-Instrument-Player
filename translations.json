@@ -9,8 +9,8 @@
       "en": "When you equip your instrument in Sky, enter the letters on the buttons here in order."
     },
     "tutorial2": {
-      "tr": "example format:\nq w e r t a s d f g z x c v b",
-      "en": "örnek format:\nq w e r t a s d f g z x c v b"
+      "tr": "Örnek format:\nq w e r t a s d f g z x c v b\nBu tuşlarla bu sitedeki enstrümanı kullanabilirsiniz: https://specy.github.io/skyMusic",
+      "en": "Example format:\nq w e r t a s d f g z x c v b\nYou can use the instrument on this site with these keys: https://specy.github.io/skyMusic"
     },
     "starting": {
       "tr": "başlıyor...",
@@ -41,13 +41,28 @@
       "en": "Choose music from list:"
     },
     "choose_in_list": {
-      "tr": "\nLütfen sadece listede olan sayılardan seçin!!",
-      "en": "\nPlease only select numbers from the list!!"
+      "tr": "\nLütfen sadece listede olan sayılardan seçin!! \n",
+      "en": "\nPlease only select numbers from the list!! \n"
     },
     "invalidChar": {
-      "tr": "Geçersiz karakter: *!!",
-      "en": "Invalid character: *!!"
+      "tr": "Geçersiz karakter!!: *",
+      "en": "Invalid character!!: *"
+    },
+    "restart": {
+      "tr": "Programı yeniden başlatmak için 1'e basın:\nÇıkmak için ise herhangi bir tuşa basın\n",
+      "en": "Press 1 to restart the program \nPress any key to exit\n"
+    },
+    "length_err":{
+      "tr":"Boşluklarla ayrılmış şekilde 15 karakter girmelisin",
+      "en":"You must enter 15 characters, separated by spaces."
+    },
+    "dot_comma_error":{
+      "tr":"Eğer bu alana gireceğin tuşlar arasında '.' veya ',' karakteri varsa, onu Ayarlar>Kontroller'den başka bir tuşla değiştir (öneri: 'b' veya başka boş bir tuş).",
+      "en":"If one of the letters on the buttons contains '.' or ',' , change it to another key from Settings>Controls (suggestion: 'b' or any empty one)."
+    },
+    "type_error":{
+      "tr":"buraya sadece sayı girebilirsin!!\n",
+      "en":"You can only enter numbers here!!\n"
     }
-
   }
 }

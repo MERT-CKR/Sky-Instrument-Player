@@ -6,6 +6,7 @@ import json
 
 
 
+
 with open("settings.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
@@ -13,9 +14,12 @@ current_dir = os.getcwd()
 translations_Path = os.path.join(current_dir,"translations.json")
 
 def load_translations():
+    global user_locale
     if data["settings"][0]["firstTime"] == 0 or data["settings"][0]["language"]=="":
         print("Select your language: \n1.Türkçe \n2.English")
         lang = int(input("\n>> "))
+        if lang not in [1,2]:
+            load_translations()
         if lang == 1:
             user_locale = "tr"
         elif lang == 2:
@@ -37,37 +41,52 @@ def load_translations():
 
 load_translations()
 
-# settings.json'u güncelle
-if data["settings"][0]["firstTime"] == 1:
-    pass
-else:
-    print(_("first_opening"))
 
-    data["settings"][0]["firstTime"] = 1
 
-    print(_("tutorial1"))
-    print(_("tutorial2"))
-    # print(_("tutorial3"))
-    # print(_("tutorial4"))
-
-    newKeys = input(">> ")
-    newKeys = newKeys.replace(",", " ")
-
-    if newKeys == "":
-        data["settings"][0]["keys"] = data["settings"][0]["Default_keys"]
+def update_settings():
+    global data
+    global newKeys
+    global key
+    # settings.json'u güncelle
+    if data["settings"][0]["firstTime"] == 1:
+        pass
     else:
-        data["settings"][0]["keys"] = newKeys
+        print(_("first_opening"))
+        unwanted_chars=["1","2","3","4","5","6","7","8","9","0","-","?","'","=","*","(",")","{","}"]
+        unwanted_chars2=[".",","]
+
+        print(_("tutorial1"))
+        print(_("tutorial2"))
+
+        newKeys = input(">> ")
+        for keyx in newKeys:
+            if keyx in unwanted_chars2:
+                print(_("dot_comma_error"))
+                update_settings()
+            if keyx in unwanted_chars:
+                invChar= _("invalidChar").replace("*",keyx)
+                print(invChar)
+                update_settings()
+            elif len(newKeys) !=29:
+                print(_("length_err"))
+                update_settings()
+                
+        data["settings"][0]["firstTime"] = 1
+        if newKeys == "":
+            data["settings"][0]["keys"] = data["settings"][0]["Default_keys"]
+        else:
+            data["settings"][0]["keys"] = newKeys
 
 
 
-with open("settings.json", "w", encoding="utf-8") as file:
-    json.dump(data, file, indent=4, ensure_ascii=False)
+    with open("settings.json", "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
 
-print(_("key_assigned"))
-key =  data["settings"][0]["keys"]
-key = key.split()
+    print(_("key_assigned"))
+    key =  data["settings"][0]["keys"]
+    key = key.split()
 
-
+update_settings()
 
 
 
@@ -92,7 +111,7 @@ def normalizeJson(Fname):
     else:
         ErrMsg = _("unknown_format2")
         ErrMsg=ErrMsg.replace("*",Fname)
-        raise KeyError(f'{Fname} için hata: "songNotes" anahtarı JSON dosyasında bulunamadı.')
+        raise KeyError(ErrMsg)
 
     # Birleştirilmiş veriyi tutacak sözlük
     merged_data = {}
@@ -172,11 +191,22 @@ def ShowList():
 
 def bring():
     global selcted_music
-    ShowList()
+    global selection
     print(_("choose music"))
-    selection = int(input(">> "))
+    ShowList()
+    
+    err=0
+    try:
+        selection = int(input(">> "))
+    except:
+        err=1
+    
+    if err==1:
+        print(_("type_error"))
+        bring()
+        
     if selection > max(Sheet_dict) or selection <=0:
-        print(_("choose_in_list"))#çeviri ekle
+        print(_("choose_in_list"))
         bring()
     else:
         selcted_music = Sheet_dict[selection]
@@ -188,9 +218,8 @@ df1 = pd.read_json(filepath)
 def Timer(function="return-timer"):
     global salise
     global now
-    global adjustment
     if function == "start":
-        now = time.time()
+        now = time.time()+1
         salise = int((now - int(now)) * 1000) 
         
     else:
@@ -218,7 +247,7 @@ def playMusic():
             break
         
         notes = df1["key"][t].split(",")
-        notes_to_press = [] 
+        notes_to_press = []
         for note in notes:
             pressed_keys = note.split(" ")
             for char in pressed_keys:
@@ -237,7 +266,7 @@ def playMusic():
         for key_to_press in notes_to_press:
             keyboard.press(key_to_press)
         print(notes_to_press)
-        time.sleep(0.15)  # Küçük bir bekleme
+        time.sleep(0.05)  # Küçük bir bekleme
         # Basılan notaları serbest bırak
         for key_to_press in notes_to_press:
             keyboard.release(key_to_press)
@@ -247,3 +276,4 @@ def playMusic():
             break
 
 playMusic()
+
