@@ -3,8 +3,6 @@ import keyboard
 import pandas as pd
 import os
 import json
-import os
-
 
 
 with open("settings.json", "r", encoding="utf-8") as file:
