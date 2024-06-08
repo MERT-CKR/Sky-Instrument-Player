@@ -1,19 +1,14 @@
-## Bu uygulama, Steam platformundaki "Sky: Children of the Light" isimli oyundaki enstrümanları otomatik olarak çalmak için tasarlandı. 
+Türkçe readme dosyası için [tıklayın](https://github.com/MERT-CKR/Sky-Instrument-Player/blob/main/README-TR.md)
+---
+## This application is designed to automatically play instruments in the game "Sky: Children of the Light" on the Steam platform.
 
-### [Eğer uygulamayı indirdiyseniz, oyun olmadan bu sitede de test edebilirsiniz.](https://specy.github.io/skyMusic/)
+### [If you have downloaded the application, you can also test it on this site without the game.](https://specy.github.io/skyMusic/)
 
-
-
-
-
-#### Programın çalışabilmesi için:
-* Python'un bilgisayarınızda yüklü olduğundan emin olun.
-### Aşağıdaki kütüphaneleri yüklemeniz gerekmektedir:
-* pandas 
+#### To run the program:
+* Ensure that Python is installed on your computer.
+### You need to install the following libraries:
+* pandas
 * keyboard
-
-
-Bu kütüphaneleri komut satırı arayüzünde aşağıdaki komutları kullanarak yükleyin:
 
 ```cmd
 pip install pandas
@@ -23,40 +18,36 @@ pip install pandas
 pip install keyboard
 ```
 
-### kullanım:
+### Usage:
 
-Program ilk açıldığında sizden dil seçmenizi isteyecektir.
+When you first open the program, it will ask you to select a language.
 
+## Depending on the environment where you will use the program, you need to select the key combination:
 
-## Programı hangi ortamda kullanacağınıza bağlı olarak tuş kombinasyonunu seçmeniz gerekmektedir:
-
-### 1. Eğer internet sitesindeki enstrümanları kullanıyorsanız, şu tuş kombinasyonunu kullanabilirsiniz:
-
+### 1. If you are using the instruments on the website, you can use the following key combination:
 `
 q w e r t a s d f g z x c v b
 `
 
-### 2. Eğer oyundaki enstrümanı kullanıyorsanız:
-Oyundaki enstrümanı kuşandığınızda butonların üzerinde yazan harfleri, aralarında boşluk olacak şekilde girin. Aralarında nokta veya virgül karakterleri varsa bunları Ayarlar > Kontroller kısmından başka bir tuşla değiştirin.
+### 2. If you are using the instrument in the game:
+When you equip the instrument in the game, enter the letters displayed on the buttons, separated by spaces. If there are period or comma characters among them, change these to another key from Settings > Controls.
 
 ---
 
-### Önemli not
+### Important Note
 
-Listeden müziğinizi seçip enstrüman çalacağınız pencereye odak verin. Bu kısımda biraz dikkatli olmalısınız; eğer odağı başka bir yere verirseniz rastgele tuşlara basılacaktır, bu da istenmeyen durumları tetikleyebilir. Örneğin, eğer odağı bir metin belgesine verirseniz, oraya yazı yazacaktır. Bu yüzden müzik çalma sürecinde odağı hedef pencerede tuttuğunuzdan emin olun. Müzik çalma sürecini iptal etmek için ise `"` tuşuna ard arda birkaç kez basın.
-
----
-### Başka müzikleri listeye ekleme 
-
-"Sky-Auto Instrument Player.py" ile aynı dizinde, müziklerin bulunduğu bir klasör olan "SongDatabase" içine istediğiniz müzikleri kopyalayın ve "New Sheets" isimli klasöre yapıştırın. Programı yeniden başlatın veya açın.
-
-Eğer "New Sheets" isimli bir klasör yoksa, uygulamayı çalıştırdığınızda otomatik olarak oluşturulacaktır.
-
-Tek seferde çok fazla dosyayı aynı anda eklemeniz önerilmiyor. Ayrıca, "New Sheets" klasörüne attığınız dosyaların içinde Japonca veya başka dilde karakterler varsa hata verebilir. Bu karakterleri silip tekrar denerseniz düzelecektir.
-
-Dil seçimini veya tuş seçimini değiştirmek için: reset key settings.py dosyasını çalıştırın.
-
-
-"Sheets" klasöründe, listedeki müzikler bulunmaktadır. Eğer isterseniz, onları yeniden adlandırabilirsiniz.
+Select your music from the list and focus on the window where you will play the instrument. You need to be careful here; if you focus elsewhere, random keys will be pressed, which may trigger unwanted situations. For example, if you focus on a text document, it will type there. Therefore, make sure to keep the focus on the target window during the music playing process. To cancel the music playing process, press the `"` key several times consecutively.
 
 ---
+
+### Adding other music to the list
+
+Copy the music you want into the "SongDatabase" folder located in the same directory as "Sky-Auto Instrument Player.py" and paste them into the "New Sheets" folder. Restart or open the program.
+
+If there is no folder named "New Sheets", it will be automatically created when you run the application.
+
+It is not recommended to add too many files at once. Also, if the files you put in the "New Sheets" folder contain Japanese or other language characters, it may give an error. If you remove these characters and try again, it should work.
+
+To change the language selection or key selection: run the reset key settings.py file.
+
+The "Sheets" folder contains the music in the list. If you wish, you can rename them.
