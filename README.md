@@ -30,7 +30,7 @@ q w e r t a s d f g z x c v b
 `
 
 ### 2. If you are using the instrument in the game:
-When you equip the instrument in the game, enter the letters displayed on the buttons, separated by spaces. If there are period or comma characters among them, change these to another key from Settings > Controls.
+When you equip the instrument in the game, enter the letters displayed on the buttons, separated by spaces. If there are dot or comma characters among them, change these to another key from Settings > Controls.
 
 ---
 
