@@ -30,7 +30,7 @@
     },
     "unknown_format": {
       "tr": "* için hata: JSON dosyası beklenilen formatta değil!",
-      "en": "Error for *: JSON dosyası beklenilen formatta değil!"
+      "en": "Error for *: JSON file is not in the expected format!"
     },
     "unknown_format2": {
       "tr": "* için hata: 'songNotes' anahtarı JSON dosyasında bulunamadı, yanlış veya hatalı dosya olabilir!!",
