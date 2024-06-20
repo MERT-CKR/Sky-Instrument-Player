@@ -2,7 +2,7 @@
   "translations": {
     "key_error1":{
       "tr":"Her item 'time' ve 'key' anahtarlarına sahip olmalıdır.",
-      "en":"all items need 'time' and 'key', wrong format"
+      "en":"All items need 'time' and 'key', wrong format"
     },
     "tutorial1": {
       "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz.",
@@ -13,19 +13,19 @@
       "en": "Example format:\nq w e r t a s d f g z x c v b\nYou can use the instrument on this site with these keys: https://specy.github.io/skyMusic"
     },
     "starting": {
-      "tr": "başlıyor...",
-      "en": "starting..."
+      "tr": "Başlıyor...",
+      "en": "Starting..."
     },
     "key_assigned": {
       "tr": "Tuşlar atandı\n",
-      "en": "keys assigned\n"
+      "en": "Keys assigned\n"
     },
     "loop_ending": {
       "tr": " \" tuşuna basıldı işlem durduruldu\n",
       "en": " \" key is pressed operation is stopped\n"
     },
     "first_opening": {
-      "tr": "ilk açılış algılandı",
+      "tr": "İlk açılış algılandı",
       "en": "First opening detected"
     },
     "unknown_format": {
@@ -61,7 +61,7 @@
       "en":"If one of the letters on the buttons contains '.' or ',' , change it to another key from Settings>Controls (suggestion: 'b' or any empty one)."
     },
     "type_error":{
-      "tr":"buraya sadece sayı girebilirsin!!\n",
+      "tr":"Buraya sadece sayı girebilirsin!!\n",
       "en":"You can only enter numbers here!!\n"
     }
   }
