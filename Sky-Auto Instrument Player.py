@@ -203,7 +203,7 @@ def playMusic():
         note_time = df1["time"][t]
         if firstTime == 0:
             Timer("start") 
-        firstTime=1
+            firstTime=1
         current_time = Timer()
         
         while current_time < note_time:  # wait for correct time
