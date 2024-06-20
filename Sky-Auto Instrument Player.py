@@ -102,7 +102,7 @@ def normalizeJson(Fname):
     Fpath = os.path.join(current_dir, "New Sheets", Fname)
     
     # read JSON file
-    with open(Fpath, 'r') as f:
+    with open(Fpath, 'r', encoding="utf-8") as f:
         data = json.load(f)
     
     # Getting first element of JSON file
