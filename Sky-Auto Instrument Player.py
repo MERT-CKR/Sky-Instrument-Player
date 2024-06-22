@@ -170,14 +170,14 @@ for file in file_list:
             
 def countDown():
     print(_("starting"))
-    time.sleep(1)
     print(4)
     time.sleep(1)
     print(3)
     time.sleep(1)
     print(2)
     time.sleep(1)
-    print(1)
+    print(1,"\n")
+    time.sleep(1)
         
 
 def Timer(function="return-timer"):
@@ -195,9 +195,9 @@ def playMusic():
     global df1
     filepath = os.path.join(current_dir, "Sheets", selcted_music + ".json")
     df1 = pd.read_json(filepath)
-    
+    counter=1
     countDown()
-    
+    t1 = time.time()
     firstTime=0
     for t in range(len(df1["time"])):
         note_time = df1["time"][t]
@@ -232,15 +232,17 @@ def playMusic():
         # Notes to be played simultaneously
         for key_to_press in notes_to_press:
             keyboard.press(key_to_press)
-        print(notes_to_press)
+        print(counter,notes_to_press)
         time.sleep(0.05)  # tuşlar arası bekleme.
         # Basılan notaları serbest bırak
         for key_to_press in notes_to_press:
             keyboard.release(key_to_press)
-
-        if keyboard.is_pressed('"'):
-            print(_("loop_ending"))
-            break
+        counter+=1
+    t2=time.time()
+    playtime = str(t2-t1)[0:4]
+    playDuration =_("playback_duration")
+    playDuration = playDuration.replace("*",playtime)
+    print(playDuration)
 
 
 
@@ -262,6 +264,7 @@ def bring():
     global selection
     print(_("choose_music"))
     ShowList()
+    
     
     err=0
     try:
