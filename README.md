@@ -1,6 +1,8 @@
 Türkçe readme dosyası için [tıklayın](https://github.com/MERT-CKR/Sky-Instrument-Player/blob/main/README-TR.md)
 ---
 ## This application is designed to automatically play instruments in the game "Sky: Children of the Light" on the Steam platform.
+## 👁 it on Youtube ↓
+[![watch on YT](https://i3.ytimg.com/vi/ZUfYclM6AHA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZUfYclM6AHA)
 
 ### [If you have downloaded the application, you can also test it on this site without the game.](https://specy.github.io/skyMusic/)
 
