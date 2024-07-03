@@ -1,5 +1,5 @@
 ## Bu uygulama, Steam platformundaki "Sky: Children of the Light" isimli oyundaki enstrümanları otomatik olarak çalmak için tasarlandı. 
----
+
 ## YouTube'da izleyin↓
 [![watch on YT](https://i3.ytimg.com/vi/ZUfYclM6AHA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZUfYclM6AHA)
 
