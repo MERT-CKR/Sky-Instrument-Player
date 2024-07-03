@@ -1,9 +1,12 @@
 ## Bu uygulama, Steam platformundaki "Sky: Children of the Light" isimli oyundaki enstrümanları otomatik olarak çalmak için tasarlandı. 
+---
+## This application is designed to automatically play instruments in the game "Sky: Children of the Light" on the Steam platform.
+## YouTube'da izleyin.↓
+[![watch on YT](https://i3.ytimg.com/vi/ZUfYclM6AHA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZUfYclM6AHA)
+
+
 
 ### [Eğer uygulamayı indirdiyseniz, oyun olmadan bu sitede de test edebilirsiniz.](https://specy.github.io/skyMusic/)
-
-
-
 
 
 #### Programın çalışabilmesi için:
