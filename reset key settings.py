@@ -5,12 +5,9 @@ new_data = {
         {
             "firstTime": 0,
             "keys": "",
-
-
-            "Default_keys": "y u ı o p h j k l ş n m ö ç b",
-            "example": "q w e r t a s d f g z x c v b",
+            "Tr_keys": "y u ı o p h j k l ş n m ö ç b",
+            "Example": "q w e r t a s d f g z x c v b",
             "language": "tr"
-            
         }
     ]
 }
