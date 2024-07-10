@@ -13,10 +13,10 @@ translations_Path = os.path.join(current_dir,"translations.json")
 
 
 
-# create path of New Sheets
+# Create path of New Sheets
 directory = os.path.join(current_dir,"New Sheets")
 
-# create folder
+# Create folder
 if not os.path.exists(directory):
     os.makedirs(directory)
 
@@ -24,9 +24,19 @@ def load_translations():
     global user_locale
     if data["settings"][0]["firstTime"] == 0 or data["settings"][0]["language"]=="":
         print("Select your language: \n1.Türkçe \n2.English")
-        lang = int(input("\n>> "))
-        if lang not in [1,2]:
+        lang = input("\n>> ")
+        try:
+            lang = int(lang)
+        except:
+            print(f"You can only enter numbers here: ({lang}) is not number")
             load_translations()
+            return
+            
+        if lang not in [1,2]:
+            print(f"please choose in list: {lang} not in list")
+            load_translations()
+            return
+        
         if lang == 1:
             user_locale = "tr"
         elif lang == 2:
@@ -35,7 +45,7 @@ def load_translations():
         data["settings"][0]["language"] = user_locale
 
         with open('settings.json', 'w', encoding="utf-8") as dosya:
-            json.dump(data, dosya, indent=4,ensure_ascii=False)
+            json.dump(data, dosya, indent=4, ensure_ascii=False)
     else:
         user_locale = data["settings"][0]["language"]
 
@@ -80,7 +90,7 @@ def update_settings():
                 
         data["settings"][0]["firstTime"] = 1
         if newKeys == "":
-            data["settings"][0]["keys"] = data["settings"][0]["Default_keys"]
+            data["settings"][0]["keys"] = data["settings"][0]["Example"]
         else:
             data["settings"][0]["keys"] = newKeys
 
@@ -95,20 +105,19 @@ def update_settings():
 
 update_settings()
 
-SheetKeys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
-key = key[::-1]
 
 def normalizeJson(Fname):
     Fpath = os.path.join(current_dir, "New Sheets", Fname)
     
-    # read JSON file
+    # Read JSON file
     with open(Fpath, 'r', encoding="utf-8") as f:
         data = json.load(f)
     
-    # Getting first element of JSON file
+    # Get first element of JSON file
     if len(data) > 0 and isinstance(data[0], dict):
         song_data = data[0]
     else:
+        # This method lets you replace something from translation
         ErrMsg = _("unknown_format")
         ErrMsg=ErrMsg.replace("*",Fname)
         raise ValueError(ErrMsg)
@@ -121,10 +130,10 @@ def normalizeJson(Fname):
         ErrMsg=ErrMsg.replace("*",Fname)
         raise KeyError(ErrMsg)
 
-    #Dictionary to hold merged data
+    # Dictionary to hold merged data
     merged_data = {}
 
-    # Processing data
+    # Change Sheet format
     for item in song_notes:
         if 'time' in item and 'key' in item:
             time = item['time']
@@ -137,16 +146,28 @@ def normalizeJson(Fname):
 
     # Converting results to merged format
     result = [{'time': time, 'key': ','.join(keys)} for time, keys in merged_data.items()]
-
+    
     # write json file
     with open(os.path.join(current_dir, "Sheets", Fname), 'w', encoding="UTF-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
     
 
 
-# Convert music to the correct format
+# Convert music to the wanted format
 file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
 for file in file_list:
+    if file.endswith(".json"):
+        new_name = file.replace(".json",".txt")
+        old_name = os.path.join(current_dir, "New Sheets", file)
+        new_name = os.path.join(current_dir, "New Sheets", newName)
+        os.rename(old_name,new_name)
+
+    if file.endswith(".skysheet"):
+        new_name = file.replace(".skysheet",".txt")
+        old_name = os.path.join(current_dir, "New Sheets", file)
+        new_name = os.path.join(current_dir, "New Sheets", newName)
+        os.rename(old_name,new_name)
+
     if file.endswith(".txt"):
         newName = file.replace(".txt", ".json")
         oldpath = os.path.join(current_dir, "New Sheets", file)
@@ -162,8 +183,8 @@ file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
 for file in file_list:
     if file.endswith(".json"):
         normalizeJson(file)
-        
-        # clearing old note format file
+
+        # Clearing old note format file
         clr_list = os.listdir(os.path.join(current_dir, "New Sheets"))
         for i in clr_list:
             os.remove(os.path.join(current_dir, "New Sheets", i))
@@ -185,12 +206,15 @@ def Timer(function="return-timer"):
     global now
     if function == "start":
         now = time.time()
-        salise = int((now - int(now)) * 1000) 
-        
+        salise = int((now - int(now)) * 1000)
+
     else:
         elapsed_time = time.time() - now 
-        return salise + int(elapsed_time * 1000) 
-            
+        return salise + int(elapsed_time * 1000)
+          
+SheetKeys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
+key = key[::-1]          
+
 def playMusic():
     global df1
     filepath = os.path.join(current_dir, "Sheets", selcted_music + ".json")
@@ -206,7 +230,7 @@ def playMusic():
             firstTime=1
         current_time = Timer()
         
-        while current_time < note_time:  # wait for correct time
+        while current_time < note_time:  # Wait for correct time
             current_time = Timer()
 
         if keyboard.is_pressed('"'):
@@ -223,27 +247,26 @@ def playMusic():
                 if char in SheetKeys:
                     index = SheetKeys.index(char)
                     key_to_press = key[index]  # Determine the key in the relevant index
-                    notes_to_press.append(key_to_press)  # add notes to list
+                    notes_to_press.append(key_to_press)  # Add notes to list
                 else:
                     invalidChar=_("invalid_char")
-                    invalidChar=invalidChar.replace("*",char)
+                    invalidChar=invalidChar.replace("*", char)
                     print(invalidChar)
                     
         # Notes to be played simultaneously
         for key_to_press in notes_to_press:
             keyboard.press(key_to_press)
         print(counter,notes_to_press)
-        time.sleep(0.05)  # tuşlar arası bekleme.
-        # Basılan notaları serbest bırak
+        time.sleep(0.05)  # wait betrween per pres
+        # Release pressed keys
         for key_to_press in notes_to_press:
             keyboard.release(key_to_press)
         counter+=1
     t2=time.time()
     playtime = str(t2-t1)[0:4]
     playDuration =_("playback_duration")
-    playDuration = playDuration.replace("*",playtime)
+    playDuration = playDuration.replace("*", playtime)
     print(playDuration)
-
 
 
 
@@ -265,16 +288,12 @@ def bring():
     print(_("choose_music"))
     ShowList()
     
-    
-    err=0
     try:
         selection = int(input(">> "))
     except:
-        err=1
-    
-    if err==1:
         print(_("type_error"))
         bring()
+        return
         
     if selection > max(Sheet_dict) or selection <=0:
         print(_("choose_in_list"))
@@ -293,11 +312,3 @@ while True:
         break
     else:
         continue
-
-
-
-
-
-
-
-

@@ -5,12 +5,12 @@
       "en":"All items need 'time' and 'key', wrong format"
     },
     "tutorial1": {
-      "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz.",
-      "en": "When you equip your instrument in Sky, enter the letters on the buttons here in order."
+      "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz veya aşağıdakileri kullan\n",
+      "en": "When you equip your instrument in Sky, type the letters on the keys in order here or use the following\n"
     },
     "tutorial2": {
-      "tr": "Örnek format:\nq w e r t a s d f g z x c v b\nBu tuşlarla bu sitedeki enstrümanı kullanabilirsiniz: https://specy.github.io/skyMusic",
-      "en": "Example format:\nq w e r t a s d f g z x c v b\nYou can use the instrument on this site with these keys: https://specy.github.io/skyMusic"
+      "tr": "Önerilen tuş atamaları:\nq w e r t a s d f g z x c v b\nBu tuşlarla bu sitedeki enstrümanları kullanabilirsiniz: https://specy.github.io/skyMusic \n\nTürkçe klavye için Önerilen tuş atamaları:\ny u ı o p h j k l ş n m ö ç b",
+      "en": "Suggested key bindings:\nq w e r t a s d f g z x c v b\nYou can use the instruments on this site with these keys: https://specy.github.io/skyMusic"
     },
     "starting": {
       "tr": "Başlıyor...",
@@ -20,13 +20,17 @@
       "tr": "Tuşlar atandı\n",
       "en": "Keys assigned\n"
     },
+    "playback_duration":{
+      "tr":"Çalma süresi: * sn",
+      "en":"Playback duration: * sec"
+    },
     "loop_ending": {
       "tr": " \" tuşuna basıldı işlem durduruldu\n",
       "en": " \" key is pressed operation is stopped\n"
     },
     "first_opening": {
-      "tr": "İlk açılış algılandı",
-      "en": "First opening detected"
+      "tr": "İlk açılış algılandı\n",
+      "en": "First opening detected\n"
     },
     "unknown_format": {
       "tr": "* için hata: JSON dosyası beklenilen formatta değil!",
@@ -50,7 +54,7 @@
     },
     "restart": {
       "tr": "Programdan çıkmak için 0'a basın:\nDevam Etmek için ise Enter'e basın\n",
-      "en": "Press 1 to exit the program \nPress Enter to continue\n"
+      "en": "Press 0 to exit the program \nPress Enter to continue\n"
     },
     "length_err":{
       "tr":"Boşluklarla ayrılmış şekilde 15 karakter girmelisin",
