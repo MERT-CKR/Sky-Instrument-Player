@@ -22,7 +22,7 @@ if not os.path.exists(directory):
 
 def load_translations():
     global user_locale
-    if data["settings"][0]["first_time"] == 0 or data["settings"][0]["language"]=="":
+    if data["settings"][0]["firstTime"] == 0 or data["settings"][0]["language"]=="":
         print("Select your language: \n1.Türkçe \n2.English")
         lang = input("\n>> ")
         try:
@@ -65,7 +65,7 @@ def updateSettings():
     global new_keys
     global key
     
-    if data["settings"][0]["first_time"] == 1:
+    if data["settings"][0]["firstTime"] == 1:
         pass
     else:
         print(_("first_opening"))
@@ -88,7 +88,7 @@ def updateSettings():
                 print(_("length_err"))
                 updateSettings()
                 
-        data["settings"][0]["first_time"] = 1
+        data["settings"][0]["firstTime"] = 1
         if new_keys == "":
             data["settings"][0]["keys"] = data["settings"][0]["Example"]
         else:
