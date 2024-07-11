@@ -155,39 +155,40 @@ def normalizeJson(Fname):
 
 # Convert music to the wanted format
 file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
-for file in file_list:
-    if file.endswith(".json"):
-        new_name = file.replace(".json",".txt")
-        old_name = os.path.join(current_dir, "New Sheets", file)
-        new_name = os.path.join(current_dir, "New Sheets", newName)
-        os.rename(old_name,new_name)
+if file_list !=[]:
+    for file in file_list:
+        if file.endswith(".skysheet"):
+            new_file_name = file.replace(".skysheet",".json")
+            old_name = os.path.join(current_dir, "New Sheets", file)
+            new_name = os.path.join(current_dir, "New Sheets", new_file_name)
+            os.rename(old_name,new_name)
 
-    if file.endswith(".skysheet"):
-        new_name = file.replace(".skysheet",".txt")
-        old_name = os.path.join(current_dir, "New Sheets", file)
-        new_name = os.path.join(current_dir, "New Sheets", newName)
-        os.rename(old_name,new_name)
-
-    if file.endswith(".txt"):
-        newName = file.replace(".txt", ".json")
-        oldpath = os.path.join(current_dir, "New Sheets", file)
-        newpath = os.path.join(current_dir, "New Sheets", newName)
-        try:
-            os.rename(oldpath, newpath)
-            os.remove(oldpath)
-        except Exception as e:
-            pass
-
-# Make the file more readable
-file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
-for file in file_list:
-    if file.endswith(".json"):
-        normalizeJson(file)
-
-        # Clearing old note format file
-        clr_list = os.listdir(os.path.join(current_dir, "New Sheets"))
-        for i in clr_list:
-            os.remove(os.path.join(current_dir, "New Sheets", i))
+        elif file.endswith(".txt"):
+            new_file_name = file.replace(".txt", ".json")
+            oldpath = os.path.join(current_dir, "New Sheets", file)
+            newpath = os.path.join(current_dir, "New Sheets", new_file_name)
+            
+        if file.endswith(".json"):   
+            try:
+                os.rename(oldpath, newpath)
+                os.remove(oldpath)
+            except Exception as e:
+                pass
+            normalizeJson(file)
+            
+            # Clearing old note format file
+            clr_list = os.listdir(os.path.join(current_dir, "New Sheets"))
+            for i in clr_list:
+                os.remove(os.path.join(current_dir, "New Sheets", i))
+            
+        elif "." not in file:
+            print(_("without_extension"))
+            
+        else:
+            file = file.split(".")[-1]
+            err = _("unwanted_format").replace("*",file)
+            print(err)
+   
             
 def countDown():
     print(_("starting"))
@@ -301,7 +302,6 @@ def bring():
     else:
         selcted_music = Sheet_dict[selection]
         playMusic()
-
 
 
 while True:

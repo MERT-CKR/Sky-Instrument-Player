@@ -67,6 +67,14 @@
     "type_error":{
       "tr":"Buraya sadece sayı girebilirsin!!\n",
       "en":"You can only enter numbers here!!\n"
+    },
+    "unwanted_format":{
+      "tr":"Dosya listeye eklenemedi!! Kullanılamayan uzantı: (*) \nkullanılabilir uzantılar: skysheet, txt, json\n\n",
+      "en":"The file couldn't be added to the list!! Unuseable extension: (*)\nUseable extensions: skysheet, txt, json\n\n"
+    },
+    "without_extension":{
+      "tr":"Bu dosyanın uzantısı yok. Yanlış girdi \nkullanılabilir uzantılar: skysheet, txt, json\n\n",
+      "en":"This file doesn't have extension. Wrong input \nAvailable extensions: skysheet, txt, json\n\n"
     }
   }
 }
