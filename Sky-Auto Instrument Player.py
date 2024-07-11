@@ -1,8 +1,9 @@
 import time
-import keyboard
-import pandas as pd
 import os
 import json
+from keyboard import is_pressed,press,release
+from pandas import read_json
+
 
 
 with open("settings.json", "r", encoding="utf-8") as file:
@@ -10,7 +11,6 @@ with open("settings.json", "r", encoding="utf-8") as file:
 
 current_dir = os.getcwd()
 translations_Path = os.path.join(current_dir,"translations.json")
-
 
 
 # Create path of New Sheets
@@ -22,7 +22,7 @@ if not os.path.exists(directory):
 
 def load_translations():
     global user_locale
-    if data["settings"][0]["firstTime"] == 0 or data["settings"][0]["language"]=="":
+    if data["settings"][0]["first_time"] == 0 or data["settings"][0]["language"]=="":
         print("Select your language: \n1.Türkçe \n2.English")
         lang = input("\n>> ")
         try:
@@ -60,12 +60,12 @@ load_translations()
 
 
 
-def update_settings():
+def updateSettings():
     global data
-    global newKeys
+    global new_keys
     global key
     
-    if data["settings"][0]["firstTime"] == 1:
+    if data["settings"][0]["first_time"] == 1:
         pass
     else:
         print(_("first_opening"))
@@ -75,24 +75,24 @@ def update_settings():
         print(_("tutorial1"))
         print(_("tutorial2"))
 
-        newKeys = input(">> ")
-        for keyx in newKeys:
+        new_keys = input(">> ")
+        for keyx in new_keys:
             if keyx in unwanted_chars2:
                 print(_("dot_comma_error"))
-                update_settings()
+                updateSettings()
             if keyx in unwanted_chars:
                 invChar= _("invalid_char").replace("*",keyx)
                 print(invChar)
-                update_settings()
-            elif len(newKeys) !=29:
+                updateSettings()
+            elif len(new_keys) !=29:
                 print(_("length_err"))
-                update_settings()
+                updateSettings()
                 
-        data["settings"][0]["firstTime"] = 1
-        if newKeys == "":
+        data["settings"][0]["first_time"] = 1
+        if new_keys == "":
             data["settings"][0]["keys"] = data["settings"][0]["Example"]
         else:
-            data["settings"][0]["keys"] = newKeys
+            data["settings"][0]["keys"] = new_keys
 
 
 
@@ -103,7 +103,7 @@ def update_settings():
     key =  data["settings"][0]["keys"]
     key = key.split()
 
-update_settings()
+updateSettings()
 
 
 def normalizeJson(Fname):
@@ -118,17 +118,17 @@ def normalizeJson(Fname):
         song_data = data[0]
     else:
         # This method lets you replace something from translation
-        ErrMsg = _("unknown_format")
-        ErrMsg=ErrMsg.replace("*",Fname)
-        raise ValueError(ErrMsg)
+        err_msg = _("unknown_format")
+        err_msg = err_msg.replace("*",Fname)
+        raise ValueError(err_msg)
 
     # validation of "songNotes" key
     if "songNotes" in song_data:
         song_notes = song_data["songNotes"]
     else:
-        ErrMsg = _("unknown_format2")
-        ErrMsg=ErrMsg.replace("*",Fname)
-        raise KeyError(ErrMsg)
+        err_msg = _("unknown_format2")
+        err_msg = err_msg.replace("*",Fname)
+        raise KeyError(err_msg)
 
     # Dictionary to hold merged data
     merged_data = {}
@@ -172,7 +172,7 @@ if file_list !=[]:
             try:
                 os.rename(oldpath, newpath)
                 os.remove(oldpath)
-            except Exception as e:
+            except:
                 pass
             normalizeJson(file)
             
@@ -202,7 +202,7 @@ def countDown():
     time.sleep(1)
         
 
-def Timer(function="return-timer"):
+def timer(function="return-timer"):
     global salise
     global now
     if function == "start":
@@ -212,29 +212,30 @@ def Timer(function="return-timer"):
     else:
         elapsed_time = time.time() - now 
         return salise + int(elapsed_time * 1000)
-          
-SheetKeys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
+
+sheet_keys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
 key = key[::-1]          
 
 def playMusic():
     global df1
     filepath = os.path.join(current_dir, "Sheets", selcted_music + ".json")
-    df1 = pd.read_json(filepath)
-    counter=1
+    df1 = read_json(filepath)
+    
+    counter = 1
     countDown()
     t1 = time.time()
-    firstTime=0
+    first_time = 0
     for t in range(len(df1["time"])):
         note_time = df1["time"][t]
-        if firstTime == 0:
-            Timer("start") 
-            firstTime=1
-        current_time = Timer()
-        
-        while current_time < note_time:  # Wait for correct time
-            current_time = Timer()
+        if first_time == 0:
+            timer("start") 
+            first_time = 1
 
-        if keyboard.is_pressed('"'):
+        current_time = timer()
+        while current_time < note_time:  # Wait for correct time
+            current_time = timer()
+
+        if is_pressed('"'):
             print(_("loop_ending"))
             break
         
@@ -245,29 +246,29 @@ def playMusic():
             for char in pressed_keys:
                 char=char.replace("2Key","1Key").replace("3Key","1Key")
                 char = char.strip()
-                if char in SheetKeys:
-                    index = SheetKeys.index(char)
+                if char in sheet_keys:
+                    index = sheet_keys.index(char)
                     key_to_press = key[index]  # Determine the key in the relevant index
                     notes_to_press.append(key_to_press)  # Add notes to list
                 else:
-                    invalidChar=_("invalid_char")
-                    invalidChar=invalidChar.replace("*", char)
-                    print(invalidChar)
+                    invalid_char=_("invalid_char")
+                    invalid_char=invalid_char.replace("*", char)
+                    print(invalid_char)
                     
         # Notes to be played simultaneously
         for key_to_press in notes_to_press:
-            keyboard.press(key_to_press)
+            press(key_to_press)
         print(counter,notes_to_press)
         time.sleep(0.05)  # wait betrween per pres
         # Release pressed keys
         for key_to_press in notes_to_press:
-            keyboard.release(key_to_press)
+            release(key_to_press)
         counter+=1
     t2=time.time()
     playtime = str(t2-t1)[0:4]
-    playDuration =_("playback_duration")
-    playDuration = playDuration.replace("*", playtime)
-    print(playDuration)
+    play_duration =_("playback_duration")
+    play_duration = play_duration.replace("*", playtime)
+    print(play_duration)
 
 
 
@@ -288,14 +289,14 @@ def bring():
     global selection
     print(_("choose_music"))
     ShowList()
-    
+
     try:
         selection = int(input(">> "))
-    except:
+    except TypeError:
         print(_("type_error"))
         bring()
         return
-        
+
     if selection > max(Sheet_dict) or selection <=0:
         print(_("choose_in_list"))
         bring()
@@ -307,8 +308,6 @@ def bring():
 while True:
     bring()
     print(_("restart"))
-    keepContinue = input(">> ")
-    if keepContinue == "0":
+    keep_continue = input(">> ")
+    if keep_continue == "0":
         break
-    else:
-        continue
