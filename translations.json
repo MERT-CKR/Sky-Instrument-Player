@@ -75,6 +75,14 @@
     "without_extension":{
       "tr":"Bu dosyanın uzantısı yok. Yanlış girdi \nkullanılabilir uzantılar: skysheet, txt, json\n\n",
       "en":"This file doesn't have extension. Wrong input \nAvailable extensions: skysheet, txt, json\n\n"
+    },
+    "added_list":{
+      "tr":"* listeye eklendi!\n",
+      "en":"* added to list!\n"
+    },
+    "unicode_error":{
+      "tr":"* isimli dosyanın içeriğinde bilinmeyen karakter bulunuyor onları kaldırıp tekrar dene!\n",
+      "en":"The file named * contains unknown characters, remove them and try again!\n"
     }
   }
 }
