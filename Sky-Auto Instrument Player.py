@@ -106,10 +106,10 @@ updateSettings()
 
 
 def normalizeJson(file_pth):
+    
     file_name = file_pth.split("\\")[-1]
     
-    def ReadJSON(encoding="UTF-8"):
-        lvl=1
+    def ReadJSON(encoding="UTF-8",lvl=1):    
         global data
         with open(file_pth, 'r', encoding = encoding) as f:
             try:
@@ -118,7 +118,7 @@ def normalizeJson(file_pth):
                 lvl+=1
                 if lvl>3:
                     return
-                ReadJSON("UTF-16")
+                ReadJSON("UTF-16",lvl)
                 return
     ReadJSON()
     
