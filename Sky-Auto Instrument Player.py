@@ -5,12 +5,11 @@ from keyboard import is_pressed,press,release
 from pandas import read_json
 
 
-
 with open("settings.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
 current_dir = os.getcwd()
-translations_Path = os.path.join(current_dir,"translations.json")
+translations_path = os.path.join(current_dir,"translations.json")
 
 
 # Create path of New Sheets
@@ -31,7 +30,7 @@ def load_translations():
             print(f"You can only enter numbers here: ({lang}) is not number")
             load_translations()
             return
-            
+        
         if lang not in [1,2]:
             print(f"please choose in list: {lang} not in list")
             load_translations()
@@ -50,7 +49,7 @@ def load_translations():
         user_locale = data["settings"][0]["language"]
 
 
-    with open(translations_Path, 'r', encoding='utf-8') as f:
+    with open(translations_path, 'r', encoding='UTF-16') as f:
         translations = json.load(f)
 
     global _
@@ -106,20 +105,24 @@ def updateSettings():
 updateSettings()
 
 
-def normalizeJson(Fname):
-    Fpath = os.path.join(current_dir, "New Sheets", Fname)
+def normalizeJson(file_pth):
+    file_name = file_pth.split("\\")[-1]
     
     # Read JSON file
-    with open(Fpath, 'r', encoding="utf-8") as f:
-        data = json.load(f)
+    with open(file_pth, 'r', encoding="utf-16") as f:
+        try:
+            data = json.load(f)
+        except UnicodeDecodeError:
+            err = _("unicode_error").replace("*",file_name)
+            print(err)
+            return
     
     # Get first element of JSON file
     if len(data) > 0 and isinstance(data[0], dict):
         song_data = data[0]
     else:
         # This method lets you replace something from translation
-        err_msg = _("unknown_format")
-        err_msg = err_msg.replace("*",Fname)
+        err_msg = _("unknown_format").replace("*",file_name)
         raise ValueError(err_msg)
 
     # validation of "songNotes" key
@@ -127,14 +130,16 @@ def normalizeJson(Fname):
         song_notes = song_data["songNotes"]
     else:
         err_msg = _("unknown_format2")
-        err_msg = err_msg.replace("*",Fname)
+        err_msg = err_msg
         raise KeyError(err_msg)
-
+    
+    
     # Dictionary to hold merged data
     merged_data = {}
 
     # Change Sheet format
     for item in song_notes:
+        item["key"] = item["key"].replace("2Key","1Key").replace("3Key","1Key")#not sure
         if 'time' in item and 'key' in item:
             time = item['time']
             key = item['key']
@@ -148,39 +153,32 @@ def normalizeJson(Fname):
     result = [{'time': time, 'key': ','.join(keys)} for time, keys in merged_data.items()]
     
     # write json file
-    with open(os.path.join(current_dir, "Sheets", Fname), 'w', encoding="UTF-8") as f:
+    with open(os.path.join(current_dir, "Sheets", file_name), 'w', encoding="UTF-16") as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
-    
 
+    log_msg = _("added_list").replace("*",file_name.split(".")[0])
+    print(log_msg)
+    
+sheets_dir = os.path.join(current_dir, "Sheets")
+new_sheets_dir = os.path.join(current_dir, "New Sheets")
 
 # Convert music to the wanted format
-file_list = os.listdir(os.path.join(current_dir, "New Sheets"))
+file_list = os.listdir(new_sheets_dir)
 if file_list !=[]:
     for file in file_list:
-        if file.endswith(".skysheet"):
-            new_file_name = file.replace(".skysheet",".json")
-            old_name = os.path.join(current_dir, "New Sheets", file)
-            new_name = os.path.join(current_dir, "New Sheets", new_file_name)
-            os.rename(old_name,new_name)
-
-        elif file.endswith(".txt"):
-            new_file_name = file.replace(".txt", ".json")
-            oldpath = os.path.join(current_dir, "New Sheets", file)
-            newpath = os.path.join(current_dir, "New Sheets", new_file_name)
+        file_ext = file.split(".")[-1]
+        if file_ext in ["skysheet","txt","json"]:
+            new_file_name = file.replace(f".{file_ext}",".json")
+            old_path = os.path.join(new_sheets_dir, file)
+            new_path = os.path.join(new_sheets_dir, new_file_name)
+            os.rename(old_path, new_path)
             
-        if file.endswith(".json"):   
-            try:
-                os.rename(oldpath, newpath)
-                os.remove(oldpath)
-            except:
-                pass
-            normalizeJson(file)
-            
+            normalizeJson(new_path)
+            Sheets_list = os.listdir(sheets_dir)
             # Clearing old note format file
-            clr_list = os.listdir(os.path.join(current_dir, "New Sheets"))
-            for i in clr_list:
-                os.remove(os.path.join(current_dir, "New Sheets", i))
-            
+            if new_file_name in Sheets_list:
+                os.remove(os.path.join(new_sheets_dir, new_file_name))
+
         elif "." not in file:
             print(_("without_extension"))
             
@@ -188,8 +186,12 @@ if file_list !=[]:
             file = file.split(".")[-1]
             err = _("unwanted_format").replace("*",file)
             print(err)
-   
             
+        
+            
+        
+
+
 def countDown():
     print(_("starting"))
     print(4)
@@ -240,11 +242,12 @@ def playMusic():
             break
         
         notes = df1["key"][t].split(",")
+        
         notes_to_press = []
         for note in notes:
             pressed_keys = note.split(" ")
             for char in pressed_keys:
-                char=char.replace("2Key","1Key").replace("3Key","1Key")
+                # char=char.replace("2Key","1Key").replace("3Key","1Key") # will be removed
                 char = char.strip()
                 if char in sheet_keys:
                     index = sheet_keys.index(char)
@@ -306,7 +309,8 @@ def bring():
 
 
 while True:
-    bring()
+    if __name__ == "__main__":
+        bring()
     print(_("restart"))
     keep_continue = input(">> ")
     if keep_continue == "0":
