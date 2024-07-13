@@ -49,7 +49,7 @@ def load_translations():
         user_locale = data["settings"][0]["language"]
 
 
-    with open(translations_path, 'r', encoding='UTF-16') as f:
+    with open(translations_path, 'r', encoding='UTF-8') as f:
         translations = json.load(f)
 
     global _
@@ -108,14 +108,19 @@ updateSettings()
 def normalizeJson(file_pth):
     file_name = file_pth.split("\\")[-1]
     
-    # Read JSON file
-    with open(file_pth, 'r', encoding="utf-16") as f:
-        try:
-            data = json.load(f)
-        except UnicodeDecodeError:
-            err = _("unicode_error").replace("*",file_name)
-            print(err)
-            return
+    def ReadJSON(encoding="UTF-8"):
+        lvl=1
+        global data
+        with open(file_pth, 'r', encoding = encoding) as f:
+            try:
+                data = json.load(f)
+            except UnicodeDecodeError:
+                lvl+=1
+                if lvl>3:
+                    return
+                ReadJSON("UTF-16")
+                return
+    ReadJSON()
     
     # Get first element of JSON file
     if len(data) > 0 and isinstance(data[0], dict):
@@ -129,8 +134,7 @@ def normalizeJson(file_pth):
     if "songNotes" in song_data:
         song_notes = song_data["songNotes"]
     else:
-        err_msg = _("unknown_format2")
-        err_msg = err_msg
+        err_msg = _("unknown_format2").replace("*",file_name)
         raise KeyError(err_msg)
     
     
@@ -139,7 +143,7 @@ def normalizeJson(file_pth):
 
     # Change Sheet format
     for item in song_notes:
-        item["key"] = item["key"].replace("2Key","1Key").replace("3Key","1Key")#not sure
+        item["key"] = item["key"].replace("2Key","1Key").replace("3Key","1Key")
         if 'time' in item and 'key' in item:
             time = item['time']
             key = item['key']
@@ -247,7 +251,6 @@ def playMusic():
         for note in notes:
             pressed_keys = note.split(" ")
             for char in pressed_keys:
-                # char=char.replace("2Key","1Key").replace("3Key","1Key") # will be removed
                 char = char.strip()
                 if char in sheet_keys:
                     index = sheet_keys.index(char)
