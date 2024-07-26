@@ -4,7 +4,7 @@ Türkçe readme dosyası için [tıklayın](https://github.com/MERT-CKR/Sky-Inst
 ## 👁 it on Youtube ↓
 [![watch on YT](https://i3.ytimg.com/vi/ZUfYclM6AHA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZUfYclM6AHA)
 
-### [If you have downloaded the application, you can also test it on this site without the game.](https://specy.github.io/skyMusic/)
+### If you have downloaded the application, you can also test it on [Sky Music Nightly](https://specy.github.io/skyMusic/) without the game.
 
 #### To run the program:
 * Ensure that Python is installed on your computer.
