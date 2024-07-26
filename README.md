@@ -26,7 +26,7 @@ When you first open the program, it will ask you to select a language.
 
 ## Depending on the environment where you will use the program, you need to select the key combination:
 
-### 1. If you are using the instruments on the website, you can use the following key combination:
+### 1. If you are using the instruments on the `Sky Music Nightly`, you can use the following key combination:
 `
 q w e r t a s d f g z x c v b
 `
@@ -50,6 +50,6 @@ If there is no folder named "New Sheets", it will be automatically created when 
 
 It is not recommended to add too many files at once. Also, if the files you put in the "New Sheets" folder contain Japanese or other language characters, it may give an error. If you remove these characters and try again, it should work.
 
-To change the language selection or key selection: run the reset key settings.py file.
+To change the language selection or key selection: run the "reset key settings.py" file.
 
 The "Sheets" folder contains the music in the list. If you wish, you can rename them.
