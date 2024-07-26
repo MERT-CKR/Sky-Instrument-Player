@@ -111,15 +111,15 @@ def normalizeJson(file_pth):
     
     def ReadJSON(encoding="UTF-8",lvl=1):    
         global data
-        with open(file_pth, 'r', encoding = encoding) as f:
-            try:
+        try:
+            with open(file_pth, 'r', encoding = encoding) as f:
                 data = json.load(f)
-            except UnicodeDecodeError:
-                lvl+=1
-                if lvl>3:
-                    return
-                ReadJSON("UTF-16",lvl)
+        except:
+            lvl+=1
+            if lvl>3:
                 return
+            ReadJSON("UTF-16",lvl)
+            return
     ReadJSON()
     
     # Get first element of JSON file
@@ -193,8 +193,6 @@ if file_list !=[]:
             
         
             
-        
-
 
 def countDown():
     print(_("starting"))
@@ -225,8 +223,11 @@ key = key[::-1]
 def playMusic():
     global df1
     filepath = os.path.join(current_dir, "Sheets", selcted_music + ".json")
-    df1 = read_json(filepath)
-    
+    try:
+        df1 = read_json(filepath)
+    except:
+        df1 = read_json(filepath, encoding='utf-16')
+        
     counter = 1
     countDown()
     t1 = time.time()
