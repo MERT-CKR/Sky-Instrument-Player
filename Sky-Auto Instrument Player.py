@@ -1,3 +1,4 @@
+import shutil
 import time
 import os
 import json
@@ -14,11 +15,14 @@ translations_path = os.path.join(current_dir,"translations.json")
 
 # Create path of New Sheets
 directory = os.path.join(current_dir,"New Sheets")
-
+directory2 = os.path.join(current_dir,"Raw Sheets")
 # Create folder
 if not os.path.exists(directory):
     os.makedirs(directory)
 
+if not os.path.exists(directory2):
+    os.makedirs(directory2)
+    
 def load_translations():
     global user_locale
     if data["settings"][0]["firstTime"] == 0 or data["settings"][0]["language"]=="":
@@ -109,14 +113,14 @@ def normalizeJson(file_pth):
     
     file_name = file_pth.split("\\")[-1]
     
-    def ReadJSON(encoding="UTF-8",lvl=1):    
+    def ReadJSON(encoding="UTF-8",lvl=0):    
         global data
         try:
             with open(file_pth, 'r', encoding = encoding) as f:
                 data = json.load(f)
         except:
             lvl+=1
-            if lvl>3:
+            if lvl>2:
                 return
             ReadJSON("UTF-16",lvl)
             return
@@ -181,6 +185,7 @@ if file_list !=[]:
             Sheets_list = os.listdir(sheets_dir)
             # Clearing old note format file
             if new_file_name in Sheets_list:
+                shutil.copy(os.path.join(new_sheets_dir, new_file_name),os.path.join(current_dir, "Raw Sheets"))
                 os.remove(os.path.join(new_sheets_dir, new_file_name))
 
         elif "." not in file:
