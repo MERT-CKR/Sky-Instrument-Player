@@ -1,8 +1,8 @@
 {
   "translations": {
     "key_error1":{
-      "tr":"Her item 'time' ve 'key' anahtarlarına sahip olmalıdır.",
-      "en":"All items need 'time' and 'key', wrong format"
+      "tr":"Her item 'time' ve 'key' ikilisine sahip olmalıdır. Geçersiz dosya içeriği",
+      "en":"All item must have 'time' and 'key' pair, wrong format. Invalid file content!!"
     },
     "tutorial1": {
       "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz veya aşağıdakileri kullan\n",
@@ -61,7 +61,7 @@
       "en":"You must enter 15 characters, separated by spaces."
     },
     "dot_comma_error":{
-      "tr":"Eğer bu alana gireceğin tuşlar arasında '.' veya ',' karakteri varsa, onu Ayarlar>Kontroller'den başka bir tuşla değiştir (öneri: 'b' veya başka boş bir tuş).",
+      "tr":"Eğer bu alana gireceğin tuşlar arasında '.' veya ',' karakteri varsa, onu Oyunun Ayarlar>Kontroller kısmından başka bir tuşla değiştir (öneri: 'b' veya başka boş bir tuş).",
       "en":"If one of the letters on the buttons contains '.' or ',' , change it to another key from Settings>Controls (suggestion: 'b' or any empty one)."
     },
     "type_error":{
@@ -69,12 +69,12 @@
       "en":"You can only enter numbers here!!\n"
     },
     "unwanted_format":{
-      "tr":"Dosya listeye eklenemedi!! Kullanılamayan uzantı: (*) \nkullanılabilir uzantılar: skysheet, txt, json\n\n",
-      "en":"The file couldn't be added to the list!! Unuseable extension: (*)\nUseable extensions: skysheet, txt, json\n\n"
+      "tr":"Dosya listeye eklenemedi!! Kullanılamayan uzantı: (*) \nkullanılabilir uzantılar: .skysheet, .txt, .json\n\n",
+      "en":"The file couldn't be added to the list!! Unuseable extension: (*)\nUseable extensions: .skysheet, .txt, .json\n\n"
     },
     "without_extension":{
-      "tr":"Bu dosyanın uzantısı yok. Yanlış girdi \nkullanılabilir uzantılar: skysheet, txt, json\n\n",
-      "en":"This file doesn't have extension. Wrong input \nAvailable extensions: skysheet, txt, json\n\n"
+      "tr":"Bu dosyanın uzantısı yok. Yanlış girdi \nkullanılabilir uzantılar: .skysheet, .txt, .json\n\n",
+      "en":"This file doesn't have extension. Wrong input \nAvailable extensions: .skysheet, .txt, .json\n\n"
     },
     "added_list":{
       "tr":"* listeye eklendi!\n",

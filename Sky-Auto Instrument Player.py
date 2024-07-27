@@ -16,13 +16,16 @@ translations_path = os.path.join(current_dir,"translations.json")
 # Create path of New Sheets
 directory = os.path.join(current_dir,"New Sheets")
 directory2 = os.path.join(current_dir,"Raw Sheets")
+
 # Create folder
 if not os.path.exists(directory):
     os.makedirs(directory)
 
 if not os.path.exists(directory2):
     os.makedirs(directory2)
-    
+
+
+
 def load_translations():
     global user_locale
     if data["settings"][0]["firstTime"] == 0 or data["settings"][0]["language"]=="":
@@ -201,14 +204,14 @@ if file_list !=[]:
 
 def countDown():
     print(_("starting"))
+    time.sleep(1)
     print(4)
     time.sleep(1)
     print(3)
     time.sleep(1)
     print(2)
     time.sleep(1)
-    print(1,"\n")
-    time.sleep(1)
+    print(1,"\n")   
         
 
 def timer(function="return-timer"):
@@ -225,8 +228,7 @@ def timer(function="return-timer"):
 sheet_keys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
 key = key[::-1]          
 
-def playMusic():
-    global df1
+def playMusic(selcted_music):
     filepath = os.path.join(current_dir, "Sheets", selcted_music + ".json")
     try:
         df1 = read_json(filepath)
@@ -267,11 +269,11 @@ def playMusic():
                     invalid_char=invalid_char.replace("*", char)
                     print(invalid_char)
                     
-        # Notes to be played simultaneously
+        # Notes to be play
         for key_to_press in notes_to_press:
             press(key_to_press)
         print(counter,notes_to_press)
-        time.sleep(0.05)  # wait betrween per pres
+        time.sleep(0.05)  # wait between per pres
         # Release pressed keys
         for key_to_press in notes_to_press:
             release(key_to_press)
@@ -296,8 +298,7 @@ def ShowList():
             print(counter, file)
             counter += 1
 
-def bring():
-    global selcted_music
+def main():
     global selection
     print(_("choose_music"))
     ShowList()
@@ -306,20 +307,19 @@ def bring():
         selection = int(input(">> "))
     except TypeError:
         print(_("type_error"))
-        bring()
+        main()
         return
 
     if selection > max(Sheet_dict) or selection <=0:
         print(_("choose_in_list"))
-        bring()
+        main()
     else:
         selcted_music = Sheet_dict[selection]
-        playMusic()
+        playMusic(selcted_music)
 
 
-while True:
-    if __name__ == "__main__":
-        bring()
+while __name__ == "__main__":
+    main()
     print(_("restart"))
     keep_continue = input(">> ")
     if keep_continue == "0":
