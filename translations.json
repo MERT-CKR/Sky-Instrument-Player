@@ -61,8 +61,8 @@
       "en":"You must enter 15 characters, separated by spaces."
     },
     "dot_comma_error":{
-      "tr":"Eğer bu alana gireceğin tuşlar arasında '.' veya ',' karakteri varsa, onu Oyunun Ayarlar>Kontroller kısmından başka bir tuşla değiştir (öneri: 'b' veya başka boş bir tuş).",
-      "en":"If one of the letters on the buttons contains '.' or ',' , change it to another key from Settings>Controls (suggestion: 'b' or any empty one)."
+      "tr":"Tuşlar arasında '.' veya ',' karakterleri bulunuyor, onu Oyunun Ayarlar>Kontroller kısmından başka bir tuşla değiştir (öneri: 'b' veya başka boş bir tuş).",
+      "en":"There are '.' or ',' characters among the keys, change it to another key in the Game's Settings>Controls (use any empty one)."
     },
     "type_error":{
       "tr":"Buraya sadece sayı girebilirsin!!\n",
