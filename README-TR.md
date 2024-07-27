@@ -1,21 +1,19 @@
 ## Bu uygulama, Steam platformundaki "Sky: Children of the Light" isimli oyundaki enstrümanları otomatik olarak çalmak için tasarlandı. 
 
-## YouTube'da izleyin↓
+## YouTube'da izleyin👁️↓
 [![watch on YT](https://i3.ytimg.com/vi/ZUfYclM6AHA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZUfYclM6AHA)
 
 
 
-### [Eğer uygulamayı indirdiyseniz, oyun olmadan bu sitede de test edebilirsiniz.](https://specy.github.io/skyMusic/)
-
 
 #### Programın çalışabilmesi için:
-* Python'un bilgisayarınızda yüklü olduğundan emin olun.
+* [Python](www.python.org)'un bilgisayarınızda yüklü olduğundan emin olun.
 ### Aşağıdaki kütüphaneleri yüklemeniz gerekmektedir:
 * pandas 
 * keyboard
 
 
-Bu kütüphaneleri komut satırı arayüzünde aşağıdaki komutları kullanarak yükleyin:
+Bu kütüphaneleri komut satırı arayüzünde(CMD) aşağıdaki komutları kullanarak yükleyin:
 
 ```cmd
 pip install pandas
@@ -32,7 +30,7 @@ Program ilk açıldığında sizden dil seçmenizi isteyecektir.
 
 ## Programı hangi ortamda kullanacağınıza bağlı olarak tuş kombinasyonunu seçmeniz gerekmektedir:
 
-### 1. Eğer internet sitesindeki enstrümanları kullanıyorsanız, şu tuş kombinasyonunu kullanabilirsiniz:
+### 1. Eğer "Sky Music Nightly'deki" enstrümanları kullanıyorsanız, şu tuş kombinasyonunu kullanabilirsiniz:
 
 `
 q w e r t a s d f g z x c v b
@@ -41,6 +39,9 @@ q w e r t a s d f g z x c v b
 ### 2. Eğer oyundaki enstrümanı kullanıyorsanız:
 * Oyundaki enstrümanı kuşandığınızda butonların üzerinde yazan harfleri, aralarında boşluk olacak şekilde girin. 
 * Bu tuşlar Arasında nokta veya virgül karakterleri varsa bunları Ayarlar > Kontroller kısmından başka bir tuşla değiştirin. (öneri: b)
+
+
+### Eğer uygulamayı indirdiyseniz, oyun olmadan [Sky Music Nightlyde](https://specy.github.io/skyMusic/) test edebilirsiniz.
 
 ---
 
@@ -64,5 +65,9 @@ Dil seçimini veya tuş seçimini değiştirmek için: reset key settings.py dos
 
 
 "Sheets" klasöründe, listedeki müzikler bulunmaktadır. Eğer isterseniz, onları yeniden adlandırabilirsiniz.
+
+
+### Aradığınız şeyi bulamadınız mı?
+Discorddan bana ulaşın: luvica0
 
 ---
