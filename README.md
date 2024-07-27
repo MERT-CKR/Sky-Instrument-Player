@@ -7,10 +7,12 @@ Türkçe readme dosyası için [tıklayın](https://github.com/MERT-CKR/Sky-Inst
 ### If you have downloaded the application, you can also test it on [Sky Music Nightly](https://specy.github.io/skyMusic/) without the game.
 
 #### To run the program:
-* Ensure that Python is installed on your computer.
+* Ensure that [Python](www.python.org) is installed on your computer.
 ### You need to install the following libraries:
 * pandas
 * keyboard
+
+paste the fallowing codes to your terminal (CMD)
 
 ```cmd
 pip install pandas
@@ -36,7 +38,7 @@ When you equip the instrument in the game, enter the letters displayed on the bu
 
 ---
 
-### Important Note
+### Important Note!
 
 Select your music from the list and focus on the window where you will play the instrument. You need to be careful here; if you focus elsewhere, random keys will be pressed, which may trigger unwanted situations. For example, if you focus on a text document, it will type there. Therefore, make sure to keep the focus on the target window during the music playing process. To cancel the music playing process, press the `"` key several times consecutively.
 
