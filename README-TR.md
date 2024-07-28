@@ -50,12 +50,9 @@ q w e r t a s d f g z x c v b
 ### Eğer uygulamayı indirdiyseniz, oyun olmadan [Sky Music Nightly](https://specy.github.io/skyMusic/) sitesinde test edebilirsiniz.
 
 ---
-
-## Önemli not!
-
-* Listeden müziğinizi seçip enstrüman çalacağınız pencereye odak verin. Bu kısımda biraz dikkatli olmalısınız; eğer odağı başka bir pencereye verirseniz rastgele tuşlara basılacaktır, bu da istenmeyen durumları tetikleyebilir. 
-
-* Örneğin, eğer odağı bir metin belgesine verirseniz, oraya yazı yazacaktır. Bu yüzden müzik çalma sürecinde odağı hedef pencerede tuttuğunuzdan emin olun. Müzik çalma sürecini iptal etmek için ise `"` tuşuna müzik durana kadar basılı tutun
+>[!IMPORTANT]
+> Listeden müziğinizi seçip enstrüman çalacağınız pencereye odak verin. Bu kısımda biraz dikkatli olmalısınız; eğer odağı başka bir pencereye verirseniz rastgele tuşlara basılacaktır, bu da istenmeyen durumları tetikleyebilir. 
+Örneğin, eğer odağı bir metin belgesine verirseniz, oraya yazı yazacaktır. Bu yüzden müzik çalma sürecinde odağı hedef pencerede tuttuğunuzdan emin olun. Müzik çalma sürecini iptal etmek için ise `"` tuşuna müzik durana kadar basılı tutun
 
 ---
 ### Dil seçimini veya tuş atamalarını değiştirmek için:

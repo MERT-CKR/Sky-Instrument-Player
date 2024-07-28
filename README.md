@@ -49,11 +49,9 @@ q w e r t a s d f g z x c v b
 
 ---
 
-## Important Note!
-
-* Select your music from the list and focus on the window where you will play the instrument. You need to be careful here; if you focus elsewhere, random keys will be pressed, which may trigger unwanted situations.
-
-* For example, if you focus on a text document, it will type there. Therefore, make sure to keep the focus on the target window during the music playing process. To cancel the music playing process, press and hold the `"` key untill music stop.
+> [!IMPORTANT]
+> Select your music from the list and focus on the window where you will play the instrument. You need to be careful here; if you focus elsewhere, random keys will be pressed, which may trigger unwanted situations.
+For example, if you focus on a text document, it will type there. Therefore, make sure to keep the focus on the target window during the music playing process. To cancel the music playing process, press and hold the `"` key untill music stop.
 
 ---
 ### To change the language selection or key selection:
