@@ -5,10 +5,11 @@ Türkçe readme dosyası için [tıklayın](https://github.com/MERT-CKR/Sky-Inst
 
 ## 👁 it on Youtube ↓
 [![watch on YT](https://i3.ytimg.com/vi/ZUfYclM6AHA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZUfYclM6AHA)
-
+
+
 
 #### To run the program:
-* Ensure that [Python](www.python.org) is installed on your computer.
+* Ensure that [Python](https://www.python.org) is installed on your computer.
 #### You need to install the following libraries:
 * pandas
 * keyboard
