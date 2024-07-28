@@ -28,7 +28,7 @@ pip install keyboard
 
 When you first open the program, it will ask you to select a language.
 
-you can only select English or Turkish for now
+Only English and Turkish languages supported
 
 ### Depending on the environment where you will use the program, you need to select the key combination:
 
@@ -56,7 +56,7 @@ q w e r t a s d f g z x c v b
 * For example, if you focus on a text document, it will type there. Therefore, make sure to keep the focus on the target window during the music playing process. To cancel the music playing process, press and hold the `"` key untill music stop.
 
 ---
-### To change the language selection or key selection
+### To change the language selection or key selection:
 * Run the `reset key settings.py` file.
 
 ## How to add other sheet musics to the list?
@@ -69,6 +69,12 @@ q w e r t a s d f g z x c v b
 * ### If you don't have sheets
     * Copy the sheets you want into the `SongDatabase` folder located in the same directory as `Sky-Auto Instrument Player.py` and paste them into the `New Sheets` folder. Then Restart or open the program.
 
+* ### Supported Sheet formats
+    * `.txt`
+    * `.json`
+    * `.skysheet`
+    
+
 
 * If you copy your Sheets into `New Sheets` folder and you can't find Original files. Then you can find them at the folder named `Raw Sheets`
 
@@ -77,12 +83,12 @@ q w e r t a s d f g z x c v b
 * It is not recommended to add too many files at once. Also, if the files you put in the `New Sheets` folder contain Japanese or other language characters, it may give an error. If you remove these characters and try again, it should work.
 
 
-* The `Sheets` folder contains the music in the list. If you wish, you can rename them.
+* The `Sheets` folder contains the music in the list. If you wish, you can rename or remove them.
 
 
 ---
 ### Didn't you find what you were looking for?
-* working on a Wiki For Auto-Instrument Player
+* working on a Wiki For `Auto-Instrument Player`
 * Reach me on Discord: luvica0
 
 
