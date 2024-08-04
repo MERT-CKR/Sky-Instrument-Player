@@ -14,6 +14,7 @@
 ### Aşağıdaki kütüphaneleri yüklemeniz gerekmektedir:
 * pandas 
 * keyboard
+* requests
 
 
 Bu kütüphaneleri komut satırı arayüzünde(CMD) aşağıdaki komutları kullanarak yükleyin:
@@ -24,6 +25,10 @@ pip install pandas
 
 ```cmd
 pip install keyboard
+```
+
+```cmd
+pip install requests
 ```
 
 ## Kullanım:

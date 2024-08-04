@@ -83,6 +83,26 @@
     "unicode_error":{
       "tr":"* isimli dosyanın içeriğinde bilinmeyen karakter bulunuyor onları kaldırıp tekrar dene!\n",
       "en":"The file named * contains unknown characters, remove them and try again!\n"
+    },
+    "Checking_updates":{
+      "tr":"Güncellemeler kontrol ediliyor...",
+      "en":"Checking for updates..."
+    },
+    "connection_error":{
+      "tr":"Bağlantı hatası",
+      "en":"Connection error"
+    },
+    "using_last_version":{
+      "tr":"Zaten son sürümü kullanıyorsunuz.",
+      "en":"You are already using the latest version"
+    },
+    "new_version_available":{
+      "tr":"Yeni versiyon bulundu! Kullandığın versiyon: *current_rel Yeni versiyon: *new_rel \nBuradan güncelleyin: \n>> https://github.com/MERT-CKR/Sky-Instrument-Player \nCode>Download ZIP (eski notalarını kaybetmemek için eski programdaki Sheet ve new sheet klasörlerini alabilirsiniz)!!! \n",
+      "en":"New version available! your version: *current_rel New version: *new_rel \nUpdate from here: \n>> https://github.com/MERT-CKR/Sky-Instrument-Player \nCode>Download ZIP (To avoid losing old notes, you can import Sheet and new sheet folders from the old program)!!! \n"
+    },
+    "version_could_not_be_checked":{
+      "tr":"Güncelleme kontrol edilirken bir sorun oluştu.",
+      "en":"A problem occurred while checking for updates"
     }
   }
 }

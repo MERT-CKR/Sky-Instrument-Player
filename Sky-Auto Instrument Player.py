@@ -4,7 +4,7 @@ import os
 import json
 from keyboard import is_pressed,press,release
 from pandas import read_json
-
+import requests
 
 with open("settings.json", "r", encoding="utf-8") as file:
     data = json.load(file)
@@ -66,16 +66,52 @@ load_translations()
 
 
 
+
+
+def check_Updates():
+    print(_("Checking_updates"))
+    settings = read_json("settings.json")
+    current_rel = settings["settings"][0]["version"]
+
+    url ="https://raw.githubusercontent.com/MERT-CKR/Sky-Instrument-Player/main/settings.json"
+    
+    connection =True
+    try:
+        response = requests.get(url,timeout=10)
+    except requests.ConnectionError:
+        print(_("Connection_error"))
+        connection=False
+
+        
+    if connection:
+        try:
+            json_content = response.json()
+            new_rel = json_content["settings"][0]["version"]
+
+
+            if new_rel==current_rel:
+                print(_("using_last_version"))
+                
+            elif new_rel>current_rel:
+                new_ver = _("new_version_available").replace("*current_rel",current_rel).replace("*new_rel",new_rel)
+                print(new_ver)
+                
+        except Exception as e:
+            print(_("version_could_not_be_checked"))
+            
+
+
+    
+check_Updates()
+
+
 def updateSettings():
-    global data
-    global new_keys
     global key
     
-    if data["settings"][0]["firstTime"] == 1:
-        pass
-    else:
+    if data["settings"][0]["firstTime"] != 1:
+        
         print(_("first_opening"))
-        unwanted_chars=["1","2","3","4","5","6","7","8","9","0","-","?","'","=","*","(",")","{","}"]
+        unwanted_chars=["1","2","3","4","5","6","7","8","9","0","-","?","'","=","*","(",")","{","}"]#can press these: '\' and '/'
         unwanted_chars2=[".",","]
 
         print(_("tutorial1"))
@@ -85,21 +121,25 @@ def updateSettings():
         for keyx in new_keys:
             if keyx in unwanted_chars2:
                 print(_("dot_comma_error"))
-                updateSettings()
+                updateSettings()# Recursive exception handling
+                return
+            
             if keyx in unwanted_chars:
                 invChar= _("invalid_char").replace("*",keyx)
                 print(invChar)
                 updateSettings()
+                return
+            
             elif len(new_keys) !=29:
                 print(_("length_err"))
                 updateSettings()
+                return
                 
         data["settings"][0]["firstTime"] = 1
         if new_keys == "":
             data["settings"][0]["keys"] = data["settings"][0]["Example"]
         else:
             data["settings"][0]["keys"] = new_keys
-
 
 
     with open("settings.json", "w", encoding="utf-8") as file:
@@ -113,25 +153,23 @@ updateSettings()
 
 
 def normalizeJson(file_pth):
-    
     file_name = file_pth.split("\\")[-1]
     
-    def ReadJSON(encoding="UTF-8",lvl=0):    
-        global data
-        try:
-            with open(file_pth, 'r', encoding = encoding) as f:
-                data = json.load(f)
-        except:
-            lvl+=1
-            if lvl>2:
-                return
-            ReadJSON("UTF-16",lvl)
-            return
-    ReadJSON()
+    
+    # if file cant read with UTF-8 then try UTF-16
+    try:
+        with open(file_pth, 'r', encoding = "UTF-8") as f:
+            data = json.load(f)
+            
+    except:
+        with open(file_pth, 'r', encoding = "UTF-16") as f:
+            data = json.load(f)
+    
     
     # Get first element of JSON file
     if len(data) > 0 and isinstance(data[0], dict):
         song_data = data[0]
+        
     else:
         # This method lets you replace something from translation
         err_msg = _("unknown_format").replace("*",file_name)
@@ -140,6 +178,7 @@ def normalizeJson(file_pth):
     # validation of "songNotes" key
     if "songNotes" in song_data:
         song_notes = song_data["songNotes"]
+        
     else:
         err_msg = _("unknown_format2").replace("*",file_name)
         raise KeyError(err_msg)
@@ -278,6 +317,7 @@ def playMusic(selcted_music):
         for key_to_press in notes_to_press:
             release(key_to_press)
         counter+=1
+        
     t2=time.time()
     playtime = str(t2-t1)[0:4]
     play_duration =_("playback_duration")

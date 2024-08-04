@@ -13,6 +13,7 @@
 #### You need to install the following libraries:
 * pandas
 * keyboard
+* requests
 
 paste the fallowing codes to your terminal (CMD)
 
@@ -22,6 +23,10 @@ pip install pandas
 
 ```cmd
 pip install keyboard
+```
+
+```cmd
+pip install requests
 ```
 
 ## Usage:

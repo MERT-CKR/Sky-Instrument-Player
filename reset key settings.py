@@ -3,6 +3,7 @@ from pandas import read_json
 import time
 settings = read_json("settings.json")
 version = settings["settings"][0]["version"]
+#get version from settings
 
 
 new_data = {
@@ -12,7 +13,7 @@ new_data = {
             "keys": "",
             "Tr_keys": "y u ı o p h j k l ş n m ö ç b",
             "Example": "q w e r t a s d f g z x c v b",
-            "language": "tr",
+            "language": "",
             "version": version
         }
     ]
