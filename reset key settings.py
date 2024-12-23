@@ -14,7 +14,9 @@ new_data = {
             "Tr_keys": "y u ı o p h j k l ş n m ö ç b",
             "Example": "q w e r t a s d f g z x c v b",
             "language": "",
+            "changelog":"",
             "version": version
+            
         }
     ]
 }
