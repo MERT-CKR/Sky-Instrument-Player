@@ -93,5 +93,7 @@ For example, if you focus on a text document, it will type there. Therefore, mak
 ### Didn't you find what you were looking for?
 * working on a Wiki For `Auto-Instrument Player`
 * Reach me on Discord: luvica0
+### Note from developer
+* I simplified the note system, increased performance and added many new features, but unfortunately these failed the testing phase because the game has problems when pressing several keys at the same time. Maybe I will add a mouse click mode in the future, and this can also be compiled on mobile. I plan to stop developing this for now.
 
 
