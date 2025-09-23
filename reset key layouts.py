@@ -1,28 +1,61 @@
 import json
-from pandas import read_json
 import time
-settings = read_json("settings.json")
-version = settings["settings"][0]["version"]
-#get version from settings
+
+with open("modules\\settings.json", "r", encoding="utf-8") as file:
+    settings = json.load(file)
+    try:
+        settings = settings["settings"][0]
+        version = settings["version"]
+        #get version from settings
+    except:
+        version = "1.1"
+        pass
 
 
-new_data = {
+
+
+settings = {
     "settings": [
         {
             "firstTime": 0,
-            "keys": "",
-            "Tr_keys": "y u ı o p h j k l ş n m ö ç b",
-            "Example": "q w e r t a s d f g z x c v b",
             "language": "",
-            "changelog":"",
+            "changelog": "",
             "version": version
-            
+        }
+    ],
+}
+
+layouts = {
+    "layouts": [
+        {
+            "nightly_layout": {
+                "q": 16,
+                "w": 17,
+                "e": 18,
+                "r": 19,
+                "t": 20,
+                "a": 30,
+                "s": 31,
+                "d": 32,
+                "f": 33,
+                "g": 34,
+                "z": 44,
+                "x": 45,
+                "c": 46,
+                "v": 47,
+                "b": 48
+            },
+            "sky_layout": {},
+            "tr_keys": "y u ı o p h j k l ş n m ö ç ."
         }
     ]
 }
 
-with open("settings.json", "w", encoding="utf-8") as file:
-    json.dump(new_data, file, indent=4, ensure_ascii=False)
+with open("modules\\settings.json", "w", encoding="utf-8") as file:
+    json.dump(settings, file, indent=4, ensure_ascii=False)
 
-print("key rest successfull.")
+with open("modules\\key_layouts.json", "w", encoding="utf-8") as file:
+    json.dump(layouts, file, indent=4, ensure_ascii=False)
+
+print("key layouts have been reset.")
 time.sleep(2)

@@ -1,0 +1,116 @@
+{
+  "translations": {
+    "key_error":{
+      "tr":"Her item 'time' ve 'key' ikilisine sahip olmalıdır. Geçersiz dosya içeriği!!",
+      "en":"All items must have 'time' and 'key' pair, wrong format. Invalid file content!!"
+    },
+    "add_sky_layout": {
+      "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz.",
+      "en": "When you equip your instrument in Sky, type the letters on the keys in order here."
+    },
+    "pass_without_layout": {
+      "tr": "Eğer Oyunda değil de sadece 'Sky Music Nightly' Uygulamasında kullanacaksan hiçbir şey yazmadan Enter'e bas\n",
+      "en": "If you are only going to use it in the 'Sky Music Nightly' App and not in the Game, press Enter without typing anything.\n"
+    },
+    "select_layout": {
+      "tr": "Müziği çalmak istediğiniz uygulamanın tuş düzenini seçin",
+      "en": "Select the key layout of the app you want to play music in"
+    },
+    "starting": {
+      "tr": "Başlıyor...",
+      "en": "Starting..."
+    },
+    "key_assigned": {
+      "tr": "Tuşlar atandı\n",
+      "en": "Keys assigned\n"
+    },
+    "playback_duration":{
+      "tr":"Çalma süresi: * sn",
+      "en":"Playback duration: * sec"
+    },
+    "loop_ending": {
+      "tr": " \" tuşuna basıldı işlem durduruldu\n",
+      "en": " \" key is pressed operation is stopped\n"
+    },
+    "first_opening": {
+      "tr": "İlk açılış algılandı\n",
+      "en": "First opening detected\n"
+    },
+    "choose_music": {
+      "tr": "Listeden bir Müzik seçin:\n>> ",
+      "en": "Choose music from list:\n>> "
+    },
+    "choose_in_list": {
+      "tr": "\nLütfen sadece listede olan sayılardan seçin!! \n",
+      "en": "\nPlease only select numbers from the list!! \n"
+    },
+    "invalid_char": {
+      "tr": "Geçersiz karakter!!: *",
+      "en": "Invalid character!!: *"
+    },
+    "restart": {
+      "tr": "Devam etmek için Enter'e basın\n",
+      "en": "Press Enter to continue\n"
+    },
+    "length_err":{
+      "tr":"Boşluklarla ayrılmış şekilde 15 karakter girmelisin",
+      "en":"You must enter 15 characters, separated by spaces."
+    },
+    "dot_comma_error":{
+      "tr":"Tuşlar arasında '.' veya ',' karakterleri bulunuyor, onu Oyunun Ayarlar>Kontroller kısmından başka bir tuşla değiştir (öneri: 'b' veya başka boş bir tuş).",
+      "en":"There are '.' or ',' characters among the keys, change it to another key in the Game's Settings>Controls (use any empty one)."
+    },
+    "type_error":{
+      "tr":"Buraya sadece sayı girebilirsin!!\n",
+      "en":"You can only enter numbers here!!\n"
+    },
+    "checking_updates":{
+      "tr":"Güncellemeler kontrol ediliyor...",
+      "en":"Checking for updates..."
+    },
+    "connection_error":{
+      "tr":"Bağlantı hatası",
+      "en":"Connection error"
+    },
+    "using_latest_version":{
+      "tr":"Zaten son sürümü kullanıyorsunuz.\n",
+      "en":"You are already using the latest version\n"
+    },
+    "new_version_available":{
+      "tr":"Yeni versiyon bulundu! Kullandığın versiyon: *current_rel Yeni versiyon: *new_rel \nBuradan güncelleyin: \n>> https://github.com/MERT-CKR/Sky-Instrument-Player \nCode>Download ZIP (eski notalarını kaybetmemek için eski programdaki Sheet ve new sheet klasörlerini alabilirsiniz)!!! \n",
+      "en":"New version available! your version: *current_rel New version: *new_rel \nUpdate from here: \n>> https://github.com/MERT-CKR/Sky-Instrument-Player \nCode>Download ZIP (To avoid losing old notes, you can import Sheet and new sheet folders from the old program)!!! \n"
+    },
+    "version_could_not_be_checked":{
+      "tr":"Güncelleme kontrol edilirken bir sorun oluştu.",
+      "en":"A problem occurred while checking for updates"
+    },
+    "changelog":{
+      "tr":"Değişenler listesi:",
+      "en":"Changelog:"
+    },
+    "old_format":{
+      "tr":"Eski nota formatı bulundu. Düzeltiliyor...",
+      "en":"Old sheet format detected. Fixing..."
+    },
+    "old_format_fixed":{
+      "tr":"Eski nota formatı düzeltildi.",
+      "en":"Old sheet format fixed."
+    },
+    "focus_lost":{
+      "tr":"Pencere odağı kaybedildi, program durduruldu.",
+      "en":"Window focus lost, program stoped."
+    },
+    "choose_window":{
+      "tr":"Listeden bir pencere seçin\n>> ",
+      "en":"Choose a window from list\n>> "
+    },
+    "give_focus":{
+      "tr":"Müzik çalmak istediğiniz ortama odak verin.",
+      "en":"Focus on the environment where you want to play music."
+    },
+    "continue_without_selection":{
+      "tr":"\n0 Seçim yapmadan devam et",
+      "en":"\n0 Continue without selection"
+    }
+  }
+}
