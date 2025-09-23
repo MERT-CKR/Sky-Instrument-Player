@@ -58,7 +58,8 @@ from modules.utils import load_translations
 from modules.utils import print_red, print_yellow, print_green, print_colorful_list
 from modules.utils import fix_old_format
 _ = load_translations()
-from modules.get_layout_and_scan_code import get_layout
+from modules.get_scan_code import get_layout
+from modules.player_core import playMusic
 
 
 if settings["firstTime"] != 1:
@@ -75,7 +76,8 @@ if settings["firstTime"] != 1:
 
     print(options[1])
     keys = get_layout()
-
+    
+    
     if sky_key_layout == "":
         enable_sky_keys = False
     
@@ -99,8 +101,8 @@ else:
 
 if enable_sky_keys:
     print_green(_("select_layout"))
-    print_colorful_list(1, f"        Sky Music Nightly :  {layouts["nightly_layout"]}")
-    print_colorful_list(2, f"Sky Children of the light :  {layouts["sky_layout"]}")
+    print_colorful_list(1, f"        Sky Music Nightly :  {list(layouts["nightly_layout"].keys())}")
+    print_colorful_list(2, f"Sky Children of the light :  {list(layouts["sky_layout"].keys())}")
     selection = input(">> ")
 
     if selection == "1":
@@ -113,7 +115,6 @@ else:
 
 
 # select layout
-# ascii tuşlara basmayı ekle yoksa keyboard layout sikintisi loading
 
 def check_Updates():
     print_yellow(_("checking_updates"))
@@ -163,6 +164,10 @@ musicDict = {}
 
 
 
+
+key_layout = list(key_layout.keys())[::-1]
+
+
 def return_notes(selection):
 
     selected_music = music_list[selection-1]
@@ -179,15 +184,14 @@ def return_notes(selection):
     if "songNotes" in sheet[0]:
         sheet = sheet[0]["songNotes"]
         print_green(sheet)
+        playMusic(sheet, key_layout)
+
 
     elif 'time' and 'key' in sheet[0].keys():
         print(_("old_format"))
         fix_old_format(sheet, selected_music, selected_path)
 
 
-    # playeri çağır
-    # sikintili nota formatlarını ve klasör yapısını düzelt
-    # player genshindeki gibi boşluklu göstersin
 
 
 def showList():

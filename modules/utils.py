@@ -125,6 +125,7 @@ def select_window():
             while gw.getActiveWindowTitle() != target:
                 time.sleep(1)
                 print(gw.getActiveWindowTitle(),target)
+    return target
 
 
                 
@@ -161,6 +162,7 @@ def fix_old_format(sheet, selected_music, selected_path):
     except:
         with open(selected_path, "w", encoding="utf-16") as old_format:
             json.dump(new_format, old_format, indent=4, ensure_ascii=False)
+
     print(_("old_format_fixed"))
     print(new_format)
     # playMusic(new_format[0]["songNotes"])#ignore

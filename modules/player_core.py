@@ -1,15 +1,13 @@
-from utils import *
-from utils import load_translations
+from modules.utils import *
+from modules.utils import load_translations
 _ = load_translations()
 from keyboard import press, is_pressed, press_and_release
 
-keybinds= ""
 
-#ascii desteği
+sheet_keys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
 
-def playMusic(sheet, sheet_keys):
-    select_window()
-   
+def playMusic(sheet, keybinds):
+    target = select_window()
     timer(1)
 
     for line in sheet:
@@ -21,14 +19,14 @@ def playMusic(sheet, sheet_keys):
                 key = key.replace(sheet_keys[i], keybinds[i])
 
         
-        print(f"Time {time1} - Key {key}")
+        print(f"Time: {time1} Key {key.capitalize()}")
+        
         counter = 0
         current_time = timer()
         while current_time < time1: # Wait for correct time
             current_time = timer()
-            # time.sleep(0.0005)
-            # time.sleep(0.08)
-            current_time = timer()
+            counter +=1
+            print(counter)
             if counter%200 == 0:
                 print("\n")
 
