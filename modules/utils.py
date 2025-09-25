@@ -127,8 +127,15 @@ def select_window():
                 print(gw.getActiveWindowTitle(),target)
     return target
 
-
-                
+def check_number_of_layer(raw_sheet_file):
+    try:
+        if len(raw_sheet_file[0]["instruments"]) > 1:
+            return False
+        else: 
+            return True
+    except:
+        return True
+    
 def fix_old_format(sheet, selected_music, selected_path):
     for ext in supported_extensions:
         if ext in selected_music:

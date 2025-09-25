@@ -1,8 +1,8 @@
 {
     "settings": [
         {
-            "firstTime": 1,
-            "language": "tr",
+            "firstTime": 0,
+            "language": "",
             "changelog": "",
             "version": "1.1"
         }

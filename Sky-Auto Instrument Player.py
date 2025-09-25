@@ -18,6 +18,7 @@ with open(layouts_path, "r", encoding = "utf-8") as file:
     layouts = json.load(file)
     layouts = layouts["layouts"][0]
 
+
 lang_dict = {
     "1" : "tr",
     "2" : "en"
@@ -46,7 +47,7 @@ if user_locale not in supported_languages:
         raise ValueError(f"Language not selected \nOptions are {supported_languages} !!!")
     
 
-    settings["language"] = user_locale   
+    settings["language"] = user_locale
     
 
     with open(settings_path, 'w', encoding = "utf-8") as old_file:
@@ -54,16 +55,15 @@ if user_locale not in supported_languages:
 
 
 
-from modules.utils import load_translations
-from modules.utils import print_red, print_yellow, print_green, print_colorful_list
-from modules.utils import fix_old_format
+
+from modules.utils import load_translations, print_red, print_yellow, print_green, print_colorful_list, fix_old_format, check_number_of_layer
 _ = load_translations()
+
 from modules.get_scan_code import get_layout
 from modules.player_core import playMusic
 
 
 if settings["firstTime"] != 1:
-    
     #first_opening
     print(_("first_opening"))
     
@@ -165,31 +165,37 @@ musicDict = {}
 
 
 
-key_layout = list(key_layout.keys())[::-1]
 
 
 def return_notes(selection):
-
+    key_layout = list(key_layout.keys())[::-1]
     selected_music = music_list[selection-1]
     selected_path = os.path.join(Sheets_path,selected_music)
-    print(selected_music,selected_path)
 
     try:
         with open(selected_path, "r", encoding="utf-8") as sheet:
             sheet = json.load(sheet)
+            raw_sheet = sheet.copy()
     except:
         with open(selected_path, "r", encoding="utf-16") as sheet:
             sheet = json.load(sheet)
+            raw_sheet = sheet.copy()
 
     if "songNotes" in sheet[0]:
         sheet = sheet[0]["songNotes"]
-        print_green(sheet)
-        playMusic(sheet, key_layout)
+        
+        if check_number_of_layer(raw_sheet): # it not support multiple layer
+            playMusic(sheet, key_layout)
+        else:
+            print_red("multiple layer detected!!!")
 
 
     elif 'time' and 'key' in sheet[0].keys():
         print(_("old_format"))
         fix_old_format(sheet, selected_music, selected_path)
+
+    else:
+        print("unknown note format")
 
 
 

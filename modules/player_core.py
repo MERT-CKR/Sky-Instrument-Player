@@ -1,12 +1,11 @@
 from modules.utils import *
 from modules.utils import load_translations
 _ = load_translations()
-from keyboard import is_pressed, press_and_release
+from keyboard import is_pressed
 import keyboard
 
 
 sheet_keys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
-
 
 def while_speed_test():
     x = 0
