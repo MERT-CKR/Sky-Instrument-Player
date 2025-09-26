@@ -45,8 +45,9 @@ layouts = {
                 "v": 47,
                 "b": 48
             },
-            "sky_layout": {},
-            "tr_keys": "y u ı o p h j k l ş n m ö ç ."
+            "sky_layout": {
+                
+            }
         }
     ]
 }

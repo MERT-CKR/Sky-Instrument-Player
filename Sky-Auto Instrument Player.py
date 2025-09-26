@@ -63,59 +63,25 @@ from modules.get_scan_code import get_layout
 from modules.player_core import playMusic
 
 
-if settings["firstTime"] != 1:
-    #first_opening
-    print(_("first_opening"))
-    
-    print_yellow(_("pass_without_layout"))
-    print_green(_("add_sky_layout"))
-
-    sky_key_layout = "" #input(">> ")
-    options = {1:"nightly_layout", 
-               2: "sky_layout"}
-
-    print(options[1])
-    keys = get_layout()
-    
-    
-    if sky_key_layout == "":
-        enable_sky_keys = False
-    
-    else:
-        enable_sky_keys = True
-        layouts["sky_layout"] = sky_key_layout
-
-    settings["firstTime"] = 1
-    with open(settings_path, 'w', encoding = "utf-8") as old_settings:
-        json.dump({"settings": [settings]}, old_settings, indent = 4, ensure_ascii = False)
-
-    print_yellow(_("key_assigned"))
-    
-
-if layouts["sky_layout"] == "":
-    enable_sky_keys = False
-else:
-    enable_sky_keys = True
+# print_green(_("add_sky_layout"))
+if layouts["sky_layout"] == {}:
+    keys = get_layout(layout_name = "sky_layout")
 
 
+print_green(_("select_layout"))
+print_colorful_list(1, f"        Sky Music Nightly :  {list(layouts["nightly_layout"].keys())}")
+print_colorful_list(2, f"Sky Children of the light :  {list(layouts["sky_layout"].keys())}")
+selection = input(">> ")
 
-if enable_sky_keys:
-    print_green(_("select_layout"))
-    print_colorful_list(1, f"        Sky Music Nightly :  {list(layouts["nightly_layout"].keys())}")
-    print_colorful_list(2, f"Sky Children of the light :  {list(layouts["sky_layout"].keys())}")
-    selection = input(">> ")
-
-    if selection == "1":
-        key_layout = layouts["nightly_layout"]
-    elif selection == "2":
-        key_layout = layouts["sky_layout"]
-        
-else:
+if selection == "1":
     key_layout = layouts["nightly_layout"]
+
+elif selection == "2":
+    key_layout = layouts["sky_layout"]
+
 
 
 # select layout
-
 def check_Updates():
     print_yellow(_("checking_updates"))
     current_rel = settings["version"]
@@ -168,7 +134,6 @@ musicDict = {}
 
 
 def return_notes(selection):
-    key_layout = list(key_layout.keys())[::-1]
     selected_music = music_list[selection-1]
     selected_path = os.path.join(Sheets_path,selected_music)
 

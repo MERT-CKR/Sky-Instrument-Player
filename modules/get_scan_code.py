@@ -15,12 +15,14 @@ except:
 
 
 class get_layout:
-    def __init__(self):
+    def __init__(self, layout_name):
         self.key_dict = {}
         self.ln = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
         self.empty_list = self.ln.copy()
         self.text= "      Your Sky key Layout"
         self.border = "  ---------------------------"
+        self.layout_name = layout_name
+        self.run()
 
 
     def print_layout(self):
@@ -81,7 +83,7 @@ class get_layout:
             key_layouts = json.load(file)
 
 
-        key_layouts["layouts"][0]["sky_layout"] = self.key_dict
+        key_layouts["layouts"][0][self.layout_name] = self.key_dict
 
 
         with open("modules\\key_layouts.json", "w", encoding="utf-8") as file:
@@ -91,9 +93,11 @@ class get_layout:
         print_green("\nPress enter to send keys")
         input(">> ")
 
-    def run(self,layout):
+    def run(self):
         self.print_layout()
         self.key_scan_code()
         print(self.key_dict)
         self.save()
         return self.key_dict
+
+

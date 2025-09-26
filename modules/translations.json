@@ -5,8 +5,8 @@
       "en":"All items must have 'time' and 'key' pair, wrong format. Invalid file content!!"
     },
     "add_sky_layout": {
-      "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz.",
-      "en": "When you equip your instrument in Sky, type the letters on the keys in order here."
+      "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz. (Enter'a basma, sadece harflere bas)",
+      "en": "When you equip your instrument in Sky, type the letters on the keys in order here. (Don't press Enter, just press the keys)"
     },
     "pass_without_layout": {
       "tr": "Eğer Oyunda değil de sadece 'Sky Music Nightly' Uygulamasında kullanacaksan hiçbir şey yazmadan Enter'e bas\n",
