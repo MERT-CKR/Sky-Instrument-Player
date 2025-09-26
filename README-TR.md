@@ -66,7 +66,7 @@ q w e r t a s d f g z x c v b
 
 * ### Eğer notalarınız yoksa
     * `Sky-Auto Instrument Player.py` ile aynı dizinde bulunan `SongDatabase` klasöründen istediğiniz müzik notalarını kopyalayıp `New Sheets` klasörüne yapıştırın. Sonrasında Programı açın veya yeniden başlatın.
-    * Alternatif olarak [Sky & Genshin Music Nightly](https://discord.gg/Arsf65YYHq) Discord kanalına katılın, orada `[share-your-song-sm](https://discordapp.com/channels/706253814910550118/706508410329235526)` veya `[song-library-request](https://discordapp.com/channels/706253814910550118/730884082258673715)` kanallarında arama yaparak müzik bulabilirsiziz, orada binlerce müzik var!
+    * Alternatif olarak [Sky & Genshin Music Nightly](https://discord.gg/Arsf65YYHq) Discord kanalına katılın, orada [share-your-song-sm](https://discordapp.com/channels/706253814910550118/706508410329235526) veya [song-library-request](https://discordapp.com/channels/706253814910550118/730884082258673715) kanallarında arama yaparak müzik bulabilirsiziz, orada binlerce müzik var!
 
 * ### Desteklenen nota formatları
     * `.txt`
@@ -83,5 +83,6 @@ q w e r t a s d f g z x c v b
 ### Aradığınız şeyi bulamadınız mı?
 * `Auto-Insturment Player` için Wiki üzerinde çalışıyorum 
 * Discorddan bana ulaşın: luvica0
+
 
 
