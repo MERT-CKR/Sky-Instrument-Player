@@ -12,16 +12,11 @@
 #### Programın çalışabilmesi için:
 * [Python](https://www.python.org)'un bilgisayarınızda yüklü olduğundan emin olun.
 ### Aşağıdaki kütüphaneleri yüklemeniz gerekmektedir:
-* pandas 
 * keyboard
 * requests
 
 
 Bu kütüphaneleri komut satırı arayüzünde(CMD) aşağıdaki komutları kullanarak yükleyin:
-
-```cmd
-pip install pandas
-```
 
 ```cmd
 pip install keyboard
@@ -35,7 +30,7 @@ pip install requests
 
 Program ilk açıldığında sizden dil seçmenizi isteyecektir.
 
-Sadece Türkçe ve ingilizce dil destekleri mevcut
+Sadece Türkçe ve ingilizce dil destekleri mevcut, eğer başka dil için çeviri yapabilirseniz benimle iletişime geçin. Discord: luvica0
 
 
 ### Programı hangi ortamda kullanacağınıza bağlı olarak tuş kombinasyonunu seçmeniz gerekmektedir:
@@ -47,9 +42,7 @@ q w e r t a s d f g z x c v b
 `
 
 #### 2. Eğer oyundaki enstrümanı kullanıyorsanız:
-* Oyundaki enstrümanı kuşandığınızda butonların üzerinde yazan harfleri, aralarında boşluk olacak şekilde girin. 
-
-* Bu tuşlar Arasında nokta veya virgül karakterleri varsa bunları Ayarlar > Kontroller kısmından başka bir tuşla değiştirin. (öneri: b)
+* Oyundaki enstrümanı kuşandığınızda butonların üzerinde yazan harfleri girin.
 
 
 ### Eğer uygulamayı indirdiyseniz, oyun olmadan [Sky Music Nightly](https://specy.github.io/skyMusic/) sitesinde test edebilirsiniz.
@@ -73,19 +66,13 @@ q w e r t a s d f g z x c v b
 
 * ### Eğer notalarınız yoksa
     * `Sky-Auto Instrument Player.py` ile aynı dizinde bulunan `SongDatabase` klasöründen istediğiniz müzik notalarını kopyalayıp `New Sheets` klasörüne yapıştırın. Sonrasında Programı açın veya yeniden başlatın.
+    * Alternatif olarak [Sky & Genshin Music Nightly](https://discord.gg/Arsf65YYHq) Discord kanalına katılın, orada `[share-your-song-sm](https://discordapp.com/channels/706253814910550118/706508410329235526)` veya `[song-library-request](https://discordapp.com/channels/706253814910550118/730884082258673715)` kanallarında arama yaparak müzik bulabilirsiziz, orada binlerce müzik var!
 
 * ### Desteklenen nota formatları
     * `.txt`
     * `.json`
     * `.skysheet`
 
-* Eğer notalarınızı `New Sheets` klasörüne kopyaladıysanız ve orijinal dosyaları bulamıyorsanız `Raw Sheets` klasörüne bakın.
-
-* Eğer `New Sheets` veya `Raw Sheets` klasörünü bulamıyorsanız programı bir kez çalıştırın Otomatik olarak oluşturulacaktır.
-
-
-
-* Tek seferde çok fazla dosyayı aynı anda eklemeniz önerilmiyor. Ayrıca, `New Sheets` klasörüne attığınız dosyaların içinde Japonca veya başka dilde karakterler varsa hata verebilir. Bu karakterleri silip tekrar denerseniz düzelecektir.
 
 
 * `Sheets` klasöründe, listedeki müzikler bulunmaktadır. Eğer isterseniz, onları yeniden adlandırabilirsiniz veya kaldırabilirsiniz.
@@ -96,4 +83,5 @@ q w e r t a s d f g z x c v b
 ### Aradığınız şeyi bulamadınız mı?
 * `Auto-Insturment Player` için Wiki üzerinde çalışıyorum 
 * Discorddan bana ulaşın: luvica0
+
 
