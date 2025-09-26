@@ -1,13 +1,14 @@
+# module: utils
 import os
 import json
 import time
 import pygetwindow as gw
-# module: utils
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 translations_path = os.path.join(current_dir, "translations.json")
 settings_path = os.path.join(current_dir, "settings.json")
 supported_extensions = [".skysheet", ".txt", ".json"]
+
 
 with open(settings_path, "r", encoding = "utf-8") as file:
     settings = json.load(file)
@@ -76,21 +77,31 @@ def timer(function = 0):
         elapsed_time = time.time() - now
         return salise + int(elapsed_time * 1000)
 
+
+
+
 def select_window():
     global target
+
     windows = gw.getAllTitles()
     windows = list(set(windows))
-    windows = [win for win in windows if win != ""]
-    windows = [win for win in windows if "Sky-Auto Instrument Player" not in win]
-
-    recommended = ["Sky", "Oynatıcı", "Player"]
+    
+    # Clear the list to show users
+    
+    recommended = ["Sky", "Oynatıcı", "Player", "Pemain", "Reprodutor", "Плеер", "演奏器" ] # windows where these words appear
+    unwanted = ["Sky-Auto Instrument Player", "Dosya Gezgini", "File Explorer", "Visual Studio Code", "Discord"]# Dont appear these
+    windows = [win for win in windows if win != ""] # Remove empty list elements
 
     related_windows = []
-
     for window in windows:
         for recommend in recommended:
             if recommend in window:
                 related_windows.append(window)
+
+    related_windows.sort()
+
+    for item in unwanted:
+        related_windows = [win for win in related_windows if item not in win]
 
 
     if related_windows == []:
@@ -99,33 +110,47 @@ def select_window():
         
     else:
         counter = 0
-        print(_("continue_without_selection"))
+        print("\n")
+        print_green(_("choose_window"))
+        print_colorful_list("0", _("continue_without_selection"))
         for i in range(len(related_windows)):
-            counter+=1
-            print(counter,related_windows[i])
+            counter += 1
+            print_colorful_list(counter, related_windows[i])
+
         try:
-            choise = int(input(_("choose_window")))
-        except:
+            choise = int(input(">> "))
+        except Exception as e:
+            print_red(e)
             select_window()
             return
         
-        if choise == 0:
-            target = None
-            return countDown()
-        else:
+        if choise != 0:
             target = related_windows[choise-1]
             window = gw.getWindowsWithTitle(target)[0]
-            # try:
-            #     gw.activate(window)
-            # except:
-            #     pass
+            print_green(_("give_focus"))
 
-            
-            print(_("give_focus"))
             while gw.getActiveWindowTitle() != target:
-                time.sleep(1)
-                print(gw.getActiveWindowTitle(),target)
-    return target
+                time.sleep(0.5)
+            return target
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def check_number_of_layer(raw_sheet_file):
     try:

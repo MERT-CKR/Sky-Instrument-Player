@@ -63,21 +63,49 @@ from modules.get_scan_code import get_layout
 from modules.player_core import playMusic
 
 
-# print_green(_("add_sky_layout"))
-if layouts["sky_layout"] == {}:
-    keys = get_layout(layout_name = "sky_layout")
 
+if layouts["sky_game_layout"] == {}:
+    keys = get_layout(layout_name = "sky_game_layout")
+
+if layouts["sky_music_nightly_layout"] == {}:
+    print_yellow("if you using sky music nightly you can add the layout")
+    text1="Add"
+    text1="Ask Later"
+    text1="Skip and dont ask"
+
+    print_colorful_list("1", "Add")
+    print_colorful_list("2", "Ask Later")
+    print_colorful_list("3", "Skip and don't ask")
+    selection = input(">> ")
+    
+    if selection == "1":
+        keys = get_layout(layout_name = "sky_music_nightly_layout")
+    
+    elif selection =="2":
+        pass
+
+    else:
+        settings["ask_for_nightly_layout"] = 0
+        with open(settings_path, 'w', encoding = "utf-8") as old_file:
+            json.dump({"settings": [settings]}, old_file, indent = 4, ensure_ascii = False)
+
+with open(layouts_path, "r", encoding = "utf-8") as file:
+    layouts = json.load(file)
+    layouts = layouts["layouts"][0]
+
+printable_nightly_key = str(list(layouts["sky_music_nightly_layout"].keys())).replace("'", "").replace(",","")
+printable_sky_key = str(list(layouts["sky_game_layout"].keys())).replace("'", "").replace(",","")
 
 print_green(_("select_layout"))
-print_colorful_list(1, f"        Sky Music Nightly :  {list(layouts["nightly_layout"].keys())}")
-print_colorful_list(2, f"Sky Children of the light :  {list(layouts["sky_layout"].keys())}")
+print_colorful_list(1, f"        Sky Music Nightly :  {printable_nightly_key}")
+print_colorful_list(2, f"Sky Children of the light :  {printable_sky_key}")
 selection = input(">> ")
 
 if selection == "1":
-    key_layout = layouts["nightly_layout"]
+    key_layout = layouts["sky_music_nightly_layout"]
 
 elif selection == "2":
-    key_layout = layouts["sky_layout"]
+    key_layout = layouts["sky_game_layout"]
 
 
 

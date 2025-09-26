@@ -17,8 +17,8 @@ with open("modules\\settings.json", "r", encoding="utf-8") as file:
 settings = {
     "settings": [
         {
-            "firstTime": 0,
-            "language": "",
+            "ask_for_nightly_layout": 1,
+            "language": "en",
             "changelog": "",
             "version": version
         }
@@ -28,24 +28,9 @@ settings = {
 layouts = {
     "layouts": [
         {
-            "nightly_layout": {
-                "q": 16,
-                "w": 17,
-                "e": 18,
-                "r": 19,
-                "t": 20,
-                "a": 30,
-                "s": 31,
-                "d": 32,
-                "f": 33,
-                "g": 34,
-                "z": 44,
-                "x": 45,
-                "c": 46,
-                "v": 47,
-                "b": 48
+            "sky_music_nightly_layout": {
             },
-            "sky_layout": {
+            "sky_game_layout": {
                 
             }
         }

@@ -1,7 +1,7 @@
 {
     "layouts": [
         {
-            "nightly_layout": {
+            "sky_music_nightly_layout": {
                 "q": 16,
                 "w": 17,
                 "e": 18,
@@ -18,7 +18,7 @@
                 "v": 47,
                 "b": 48
             },
-            "sky_layout": {
+            "sky_game_layout": {
                 "y": 21,
                 "u": 22,
                 "ı": 23,

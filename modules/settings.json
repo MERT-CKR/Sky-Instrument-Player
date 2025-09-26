@@ -1,7 +1,7 @@
 {
     "settings": [
         {
-            "firstTime": 0,
+            "ask_for_nightly_layout": 1,
             "language": "en",
             "changelog": "",
             "version": "1.1"

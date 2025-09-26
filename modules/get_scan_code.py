@@ -2,14 +2,11 @@ import os
 import json
 import keyboard
 
-try:
-    from modules.utils import print_green, print_red
-    from modules.utils import load_translations
-    _ = load_translations
-except:
-    from utils import print_green, print_red
-    from utils import load_translations
-    _ = load_translations
+
+from modules.utils import print_green, print_red,print_yellow
+from modules.utils import load_translations
+_ = load_translations()
+
 
 
 
@@ -19,7 +16,7 @@ class get_layout:
         self.key_dict = {}
         self.ln = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
         self.empty_list = self.ln.copy()
-        self.text= "      Your Sky key Layout"
+        self.text= f"     Your {layout_name.replace("_"," ")}"
         self.border = "  ---------------------------"
         self.layout_name = layout_name
         self.run()
@@ -27,9 +24,12 @@ class get_layout:
 
     def print_layout(self):
         self.clear_console()
+        print_green
         layout1=      f"|  {self.ln[0]}  |  {self.ln[1]}  |  {self.ln[2]}  |  {self.ln[3]}  |  {self.ln[4]}  |"
         layout2=      f"|  {self.ln[5]}  |  {self.ln[6]}  |  {self.ln[7]}  |  {self.ln[8]}  |  {self.ln[9]}  |"
         layout3=    f"|  {self.ln[10]}  |  {self.ln[11]}  |  {self.ln[12]}  |  {self.ln[13]}  |  {self.ln[14]}  |"
+
+        print_yellow(_("add_sky_layout"))
 
         print_green(self.text)
 

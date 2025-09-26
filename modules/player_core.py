@@ -34,11 +34,9 @@ def delayed_release(key, delay=0.05):
 
 def playMusic(sheet, key_layout):
     count = 0
-
     for key, value in key_layout.items():
         key_dict[key_dict_keys[count]] = [key, value]
         count+=1
-    print(key_dict)
 
     target = select_window()
     timer(1)
