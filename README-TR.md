@@ -14,9 +14,14 @@
 ### Aşağıdaki kütüphaneleri yüklemeniz gerekmektedir:
 * keyboard
 * requests
-
+* pygetwindow
 
 Bu kütüphaneleri komut satırı arayüzünde(CMD) aşağıdaki komutları kullanarak yükleyin:
+
+
+```cmd
+pip install pygetwindow
+```
 
 ```cmd
 pip install keyboard
@@ -30,8 +35,7 @@ pip install requests
 
 Program ilk açıldığında sizden dil seçmenizi isteyecektir.
 
-Sadece Türkçe ve ingilizce dil destekleri mevcut, eğer başka dil için çeviri yapabilirseniz benimle iletişime geçin. Discord: luvica0
-
+Sadece Türkçe ve ingilizce dil destekleri mevcut, eğer başka dil için çeviri yapmak isterseniz benimle iletişime geçin. Discord: luvica0
 
 ### Programı hangi ortamda kullanacağınıza bağlı olarak tuş kombinasyonunu seçmeniz gerekmektedir:
 
@@ -42,26 +46,26 @@ q w e r t a s d f g z x c v b
 `
 
 #### 2. Eğer oyundaki enstrümanı kullanıyorsanız:
-* Oyundaki enstrümanı kuşandığınızda butonların üzerinde yazan harfleri girin.
+* Oyundaki enstrümanı kuşandığınızda butonların üzerinde yazan harfleri tek tek girin.
 
 
 ### Eğer uygulamayı indirdiyseniz, oyun olmadan [Sky Music Nightly](https://specy.github.io/skyMusic/) sitesinde test edebilirsiniz.
 
 ---
->[!IMPORTANT]
-> Listeden müziğinizi seçip enstrüman çalacağınız pencereye odak verin. Bu kısımda biraz dikkatli olmalısınız; eğer odağı başka bir pencereye verirseniz rastgele tuşlara basılacaktır, bu da istenmeyen durumları tetikleyebilir. 
-Örneğin, eğer odağı bir metin belgesine verirseniz, oraya yazı yazacaktır. Bu yüzden müzik çalma sürecinde odağı hedef pencerede tuttuğunuzdan emin olun. Müzik çalma sürecini iptal etmek için ise `"` tuşuna müzik durana kadar basılı tutun
-
+>[!WARNING]
+> Artık Program Akıllı olarak hangi pencere üzerinde müziğin çalınacağını önerebiliyor, başka bir pencereye odak verdiğiniz anda çalma işlemi duruyor, bu şekilde rastgele tuşlara basarak istenmeyen kısayolların tetiklenmesi önleniyor, eğer sizin oyun pencereniz listede görünmüyorsa benimle iletişime geçin, başka dillerle ilgili sorunlar olabiliyor.
 ---
+
+
 ### Dil seçimini veya tuş atamalarını değiştirmek için:
-* `reset key settings.py` dosyasını çalıştırın.
+* `reset key layouts.py` dosyasını çalıştırın.
 
 
 
 ## Başka müzikler listeye nasıl eklenir?
 
 * ### Eğer zaten notalarınız varsa
-    * Notalarınızı `New Sheets`klasörüne kopyalayın 
+    * Notalarınızı `Sheets`klasörüne kopyalayın 
     * Nota dosyanızda sadece 1 katman olduğundan emin olun
 
 * ### Eğer notalarınız yoksa
@@ -74,15 +78,14 @@ q w e r t a s d f g z x c v b
     * `.skysheet`
 
 
-
 * `Sheets` klasöründe, listedeki müzikler bulunmaktadır. Eğer isterseniz, onları yeniden adlandırabilirsiniz veya kaldırabilirsiniz.
-
 
 ---
 
 ### Aradığınız şeyi bulamadınız mı?
 * `Auto-Insturment Player` için Wiki üzerinde çalışıyorum 
 * Discorddan bana ulaşın: luvica0
+
 
 
 
