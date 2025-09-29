@@ -1,0 +1,14 @@
+{
+    "settings": [
+        {
+            "firstTime": 0,
+            "keys": "",
+            "Tr_keys": "y u ı o p h j k l ş n m ö ç b",
+            "Example": "q w e r t a s d f g z x c v b",
+            "language": "",
+            "changelog": "Note system Changed. \nNew Sheets and Raw Sheets removed \nPerformance improved and codes simplified",
+            "version": "2.0"
+        }
+    ]
+
+}
