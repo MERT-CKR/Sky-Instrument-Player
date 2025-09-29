@@ -11,7 +11,7 @@
 #### To run the program:
 * Ensure that [Python](https://www.python.org) is installed on your computer.
 #### You need to install the following libraries:
-* pandas
+* pygetwindow
 * keyboard
 * requests
 
@@ -85,6 +85,7 @@ q w e r t a s d f g z x c v b
 ---
 ### Didn't you find what you were looking for?
 * Reach me on Discord: luvica0
+
 
 
 
