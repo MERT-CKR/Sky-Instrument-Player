@@ -1,9 +1,5 @@
 {
   "translations": {
-    "key_error":{
-      "tr":"Her item 'time' ve 'key' ikilisine sahip olmalıdır. Geçersiz dosya içeriği!!",
-      "en":"All items must have 'time' and 'key' pair, wrong format. Invalid file content!!"
-    },
     "add_sky_layout": {
       "tr": "\nSky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz. (Enter'a basma, sadece harflere bas)\n",
       "en": "\nWhen you equip your instrument in Sky, type the letters on the keys in order here. (Don't press Enter, just press the keys)\n"
@@ -28,13 +24,9 @@
       "tr":"Çalma süresi: * sn",
       "en":"Playback duration: * sec"
     },
-    "loop_ending": {
+    "stop_playing": {
       "tr": " \" tuşuna basıldı işlem durduruldu\n",
       "en": " \" key is pressed operation is stopped\n"
-    },
-    "first_opening": {
-      "tr": "İlk açılış algılandı\n",
-      "en": "First opening detected\n"
     },
     "choose_music": {
       "tr": "Listeden bir Müzik seçin:\n>> ",
@@ -45,20 +37,12 @@
       "en": "\nPlease only select numbers from the list!! \n"
     },
     "invalid_char": {
-      "tr": "Geçersiz karakter!!: *",
-      "en": "Invalid character!!: *"
+      "tr": "Hata: Bu tuş desteklenmiyor",
+      "en": "Error: This char is unsupported"
     },
     "restart": {
       "tr": "Devam etmek için Enter'e basın\n",
       "en": "Press Enter to continue\n"
-    },
-    "length_err":{
-      "tr":"Boşluklarla ayrılmış şekilde 15 karakter girmelisin",
-      "en":"You must enter 15 characters, separated by spaces."
-    },
-    "dot_comma_error":{
-      "tr":"Tuşlar arasında '.' veya ',' karakterleri bulunuyor, onu Oyunun Ayarlar>Kontroller kısmından başka bir tuşla değiştir (öneri: 'b' veya başka boş bir tuş).",
-      "en":"There are '.' or ',' characters among the keys, change it to another key in the Game's Settings>Controls (use any empty one)."
     },
     "type_error":{
       "tr":"Buraya sadece sayı girebilirsin!!\n",
@@ -111,6 +95,38 @@
     "continue_without_selection":{
       "tr":"Seçim yapmadan devam et",
       "en":"Continue without selection"
+    },
+    "unknown_format":{
+      "tr":"Bilinmeyen nota formatı",
+      "en":"Unknown sheet format"
+    },
+    "unknown_key":{
+      "tr":"Bilinmeyen tuş!!!: *",
+      "en":"Unknown key!!!: *"
+    },
+    "multiple_layer_detected":{
+      "tr":"Çok katmanlı müzik tespit edildi, Bu desteklenmiyor",
+      "en":"Multiple layer detected, it's unsupported!!!"
+    },
+    "instrument_layout":{
+      "tr":"Enstrüman tuş düzeninizdeki tuşlara tek tek basın: ",
+      "en":"Press the keys in the instrument layout one by one: "
+    },
+    "repeat_error":{
+      "tr":"Hata: Aynı tuşu sadece bir kez kullanabilirsin",
+      "en":"Error: You can only use the same key once."
+    },
+    "length_error":{
+      "tr":"Hata: Eksik tuş sayısı tespit edildi",
+      "en":"Error: Missing number of keys detected"
+    },
+    "layouts_updated":{
+      "tr":"\nTuş Düzeni Güncellendi",
+      "en":"\nKey Layouts Updated"
+    },
+    "press_enter":{
+      "tr":"\nPress Enter",
+      "en":"\nPress Enter"
     }
   }
 }

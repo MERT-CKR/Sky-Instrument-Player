@@ -3,10 +3,8 @@
         {
             "ask_for_nightly_layout": 1,
             "language": "en",
-            "changelog": "The app is now colorful, easier to use, a ton of bugs have been fixed, lots of new features have been added, the app has been completely rewritten—you should update to this version immediately!!!",
-            "version": "2.0"
+            "changelog": "",
+            "version": "2.4"
         }
     ]
-
 }
-

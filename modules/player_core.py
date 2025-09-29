@@ -1,11 +1,16 @@
-from modules.utils import *
-from modules.utils import load_translations
-_ = load_translations()
-from keyboard import is_pressed, press_and_release
+# module: player_core
+from rich.progress import Progress
+import pygetwindow as gw
 import keyboard
 import threading
+import time
 
-# sheet_keys = ["1Key0","1Key1","1Key2","1Key3","1Key4","1Key5","1Key6","1Key7","1Key8","1Key9","1Key10","1Key11","1Key12","1Key13","1Key14"][::-1]
+from modules.utils import load_translations, timer, select_window, print_red
+from keyboard import is_pressed
+
+
+_ = load_translations()
+
 
 key_dict = {
     "1Key0": [],
@@ -24,11 +29,13 @@ key_dict = {
     "1Key13": [],
     "1Key14": []
 }
+
 key_dict_keys = list(key_dict.keys())
 
 
 def delayed_release(key, delay=0.05):
-    """Tuşu delay kadar basılı tutup bırakır (thread içinde çalışır)."""
+    """If I put the release part directly in the loop, it will break the song flow. If I do not use press and release at all and use press_and_release() directly, this time Sky will not work at all because if you press a key for too short a time, Sky does not detect it."""
+    """the only way is use threading"""
     time.sleep(delay)
     keyboard.release(key)
 
@@ -42,46 +49,51 @@ def playMusic(sheet, key_layout):
     timer(1)
     t1 = time.time()
     counter = 0
-    for line in sheet:
-        key = line["key"]
-        time1 = line["time"]#1 to avoid confusion with the library
-        
-        if key in key_dict_keys:
-            keyboard_key = key_dict[key][0]
-            scan_code = key_dict[key][1]
 
-        else:
-            print_red("unknown key !!!:", key)
-
-        
-        print(f"Time: {time1}  Key: {keyboard_key.capitalize()}")
-       
-        
-        current_time = timer() 
-        while current_time < time1+250: # Wait for correct time
-            current_time = timer()
-            counter +=1
-            time.sleep(0.0005)
+    with Progress() as progress:
+        task = progress.add_task("[yellow]Playing...", total=len(sheet))
+        for line in sheet:
+            key = line["key"]
+            time1 = line["time"]#1 to avoid confusion with the library
             
-            if counter%150 == 0:
-                print("\n")
+            if key in key_dict_keys:
+                keyboard_key = key_dict[key][0]
+                scan_code = key_dict[key][1]
 
+            else:
+                print_red(_("unknown_key").replace("*", str(key)))
+
+            
+            print(f"Time: {time1}  Key: {keyboard_key.capitalize()}")
         
-        if is_pressed('"'):
-            break
+            
+            current_time = timer() 
+            while current_time < time1+250: # Wait for correct time
+                current_time = timer()
+                counter +=1
+                time.sleep(0.0005)
+                
+                if counter%150 == 0:
+                    print("\n")
 
-        if target != None:
-            if gw.getActiveWindowTitle() != target:
-                print(_("focus_lost"))
+            
+            if is_pressed('"'):
+                print(_("stop_playing"))
                 break
-        
-        keyboard.press(scan_code)
-        threading.Thread(target=delayed_release, args=(scan_code, 0.07), daemon=True).start()
+
+            if target != None:
+                if gw.getActiveWindowTitle() != target:
+                    print_red(_("focus_lost"))
+                    break
+            
+            keyboard.press(scan_code)
+            threading.Thread(target=delayed_release, args=(scan_code, 0.07), daemon=True).start()
+
+            progress.update(task, advance=1)
         
 
         
 
     t2 = time.time()
-    playtime = round(t2 - t1, 1)
-    # print_yellow(_("sheet_type_note"))
+    playtime = round(t2 - t1- 250, 1)
     print(_("playback_duration").replace("*", str(playtime)))

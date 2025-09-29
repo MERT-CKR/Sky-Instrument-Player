@@ -1,3 +1,4 @@
+# module: get_scan_code
 import os
 import json
 import keyboard
@@ -55,27 +56,27 @@ class get_layout:
         self.print_layout()
 
         for i in range(15):
-            print_green("your layout keys one by one: ")
+            print_green(_("instrument_layout"))
             event = keyboard.read_event()
             while event.event_type != keyboard.KEY_DOWN:
                 event = keyboard.read_event()
 
             if len(event.name) > 1:
-                raise ValueError ("Error: This char is unsupported")
+                raise ValueError(_("invalid_char"))
+            
 
             if event.name not in self.ln:
                 self.ln[i] = event.name
                 self.print_layout()
             else:
-                KeyError("Error: You can only use the same key once.")
+                KeyError(_("repeat_error"))
                 
             
             self.key_dict[event.name] = event.scan_code
-            # print_layout()
             print(f"{len(self.key_dict)}/15")
 
         if len(self.key_dict) != 15:
-            raise IndexError("Error: missing key detected")
+            raise IndexError(_("length_error"))
             
     def save(self):
         
@@ -89,8 +90,8 @@ class get_layout:
         with open("modules\\key_layouts.json", "w", encoding="utf-8") as file:
             json.dump(key_layouts, file, indent=4, ensure_ascii=False)
 
-        print_green("\nKey Layouts Updated")
-        print_green("\nPress enter to send keys")
+        print_green(_("layouts_updated"))
+        print_green(_("press_enter"))
         input(">> ")
 
     def run(self):

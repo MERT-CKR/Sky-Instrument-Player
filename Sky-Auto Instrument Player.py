@@ -1,6 +1,5 @@
 import os
 import json
-import requests
 
 
 current_dir = os.getcwd()
@@ -56,7 +55,7 @@ if user_locale not in supported_languages:
 
 
 
-from modules.utils import load_translations, print_red, print_yellow, print_green, print_colorful_list, fix_old_format, check_number_of_layer
+from modules.utils import load_translations, print_red, print_yellow, print_green, print_colorful_list, fix_old_format, check_number_of_layer, check_Updates
 _ = load_translations()
 
 from modules.get_scan_code import get_layout
@@ -67,27 +66,25 @@ from modules.player_core import playMusic
 if layouts["sky_game_layout"] == {}:
     keys = get_layout(layout_name = "sky_game_layout")
 
-if layouts["sky_music_nightly_layout"] == {}:
-    print_yellow("if you using sky music nightly you can add the layout")
-    text1="Add"
-    text1="Ask Later"
-    text1="Skip and dont ask"
+if settings["ask_for_nightly_layout"] == 1:
+    if layouts["sky_music_nightly_layout"] == {}:
+        print_yellow("if you using sky music nightly you can add the layout")
 
-    print_colorful_list("1", "Add")
-    print_colorful_list("2", "Ask Later")
-    print_colorful_list("3", "Skip and don't ask")
-    selection = input(">> ")
-    
-    if selection == "1":
-        keys = get_layout(layout_name = "sky_music_nightly_layout")
-    
-    elif selection =="2":
-        pass
+        print_colorful_list("1", "Add")
+        print_colorful_list("2", "Ask Later")
+        print_colorful_list("3", "Skip and don't ask")
+        selection = input(">> ")
+        
+        if selection == "1":
+            keys = get_layout(layout_name = "sky_music_nightly_layout")
+        
+        elif selection =="2":
+            pass
 
-    else:
-        settings["ask_for_nightly_layout"] = 0
-        with open(settings_path, 'w', encoding = "utf-8") as old_file:
-            json.dump({"settings": [settings]}, old_file, indent = 4, ensure_ascii = False)
+        else:
+            settings["ask_for_nightly_layout"] = 0
+            with open(settings_path, 'w', encoding = "utf-8") as old_file:
+                json.dump({"settings": [settings]}, old_file, indent = 4, ensure_ascii = False)
 
 with open(layouts_path, "r", encoding = "utf-8") as file:
     layouts = json.load(file)
@@ -96,58 +93,28 @@ with open(layouts_path, "r", encoding = "utf-8") as file:
 printable_nightly_key = str(list(layouts["sky_music_nightly_layout"].keys())).replace("'", "").replace(",","")
 printable_sky_key = str(list(layouts["sky_game_layout"].keys())).replace("'", "").replace(",","")
 
-print_green(_("select_layout"))
-print_colorful_list(1, f"        Sky Music Nightly :  {printable_nightly_key}")
-print_colorful_list(2, f"Sky Children of the light :  {printable_sky_key}")
-selection = input(">> ")
+available_keys_dict = {
+    "nightly" : printable_nightly_key,
+    "sky" : printable_sky_key
+}
 
-if selection == "1":
-    key_layout = layouts["sky_music_nightly_layout"]
-
-elif selection == "2":
+if available_keys_dict["nightly"] == str([]):
+    
     key_layout = layouts["sky_game_layout"]
 
+else:
+    print_green(_("select_layout"))
+    print_colorful_list(1, f"        Sky Music Nightly :  {printable_nightly_key}")
+    print_colorful_list(2, f"Sky Children of the light :  {printable_sky_key}")
+    selection = input(">> ")
+
+    if selection == "1":
+        key_layout = layouts["sky_music_nightly_layout"]
+
+    elif selection == "2":
+        key_layout = layouts["sky_game_layout"]
 
 
-# select layout
-def check_Updates():
-    print_yellow(_("checking_updates"))
-    current_rel = settings["version"]
-
-    url = "https://raw.githubusercontent.com/MERT-CKR/Sky-Instrument-Player/main/settings.json"
-    connection = True
-    try:
-        response = requests.get(url, timeout=4)
-    except requests.ConnectionError:
-        print_red(_("connection_error"))
-        connection = False
-
-        
-    if connection:
-        try:
-            json_content = response.json()
-            json_content = json_content["settings"][0]
-            new_rel = json_content["version"]
-            changelog = json_content["changelog"]
-
-            if new_rel == current_rel:
-                print_green(_("using_latest_version"))
-                
-            elif new_rel > current_rel:
-                new_ver = _("new_version_available").replace("*current_rel", current_rel).replace("*new_rel", new_rel)
-                print_green(new_ver)
-
-                if changelog != "":
-                    print_green(_("changelog"))
-                    print_yellow(changelog)
-            else:
-                print_yellow("Developing\n")
-                print("Your version:", current_rel)
-                print("Github version:", new_rel)
-
-        except Exception as err:
-            print_red(err)
-            print_red(_("version_could_not_be_checked"))
             
 check_Updates()
 
@@ -155,9 +122,6 @@ check_Updates()
 music_list = os.listdir(Sheets_path)
 music_list = [m for m in music_list if m.endswith(".skysheet") or  m.endswith(".txt") or m.endswith(".json")]#remove unknown extensions
 musicDict = {}
-
-
-
 
 
 
@@ -180,7 +144,7 @@ def return_notes(selection):
         if check_number_of_layer(raw_sheet): # it not support multiple layer
             playMusic(sheet, key_layout)
         else:
-            print_red("multiple layer detected!!!")
+            print_red(_("multiple_layer_detected"))
 
 
     elif 'time' and 'key' in sheet[0].keys():
@@ -188,8 +152,7 @@ def return_notes(selection):
         fix_old_format(sheet, selected_music, selected_path)
 
     else:
-        print("unknown note format")
-
+        print(_("unknown_format"))
 
 
 
@@ -197,17 +160,18 @@ def showList():
     counter = 0
     for item in music_list:
         ext = item.split(".")[1]
-        item = item.replace("." + ext, "")#remove extension like .txt
+        item = item.replace("." + ext, "")# remove extension to show user
         counter += 1
         print_colorful_list(counter, item)
     
     try:
-        selection = int(input(f"\033[32m{_("choose_music")}\033[0m"))# green input message
+        selection = int(input(f"\033[32m{_("choose_music")}\033[0m"))
     except:
         showList()
         return
     
     if selection > len(music_list) or selection <= 0:
+        print_red(_("choose_in_list"))
         showList()
         return
     

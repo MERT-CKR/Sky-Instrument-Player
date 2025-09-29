@@ -3,7 +3,7 @@ import os
 import json
 import time
 import pygetwindow as gw
-
+import requests
 current_dir = os.path.dirname(os.path.realpath(__file__))
 translations_path = os.path.join(current_dir, "translations.json")
 settings_path = os.path.join(current_dir, "settings.json")
@@ -139,7 +139,44 @@ def select_window():
 
 
 
+def check_Updates():
+    print_yellow(_("checking_updates"))
+    current_rel = settings["version"]
 
+    url = "https://raw.githubusercontent.com/MERT-CKR/Sky-Instrument-Player/main/modules/settings.json"
+    connection = True
+    try:
+        response = requests.get(url, timeout=4)
+    except requests.ConnectionError:
+        print_red(_("connection_error"))
+        connection = False
+
+        
+    if connection:
+        try:
+            json_content = response.json()
+            json_content = json_content["settings"][0]
+            new_rel = json_content["version"]
+            changelog = json_content["changelog"]
+
+            if new_rel == current_rel:
+                print_green(_("using_latest_version"))
+                
+            elif new_rel > current_rel:
+                new_ver = _("new_version_available").replace("*current_rel", current_rel).replace("*new_rel", new_rel)
+                print_green(new_ver)
+
+                if changelog != "":
+                    print_green(_("changelog"))
+                    print_yellow(changelog)
+            else:
+                print_yellow("Developing\n")
+                print("Your version:", current_rel)
+                print("Github version:", new_rel)
+
+        except Exception as err:
+            print_red(err)
+            print_red(_("version_could_not_be_checked"))
 
 
 

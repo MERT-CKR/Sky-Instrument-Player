@@ -1,7 +1,7 @@
 #### Other Languages: [English](https://github.com/MERT-CKR/Sky-Instrument-Player/blob/main/README.md)
 
 ---
-## Bu uygulama, Steam platformundaki "Sky: Children of the Light" isimli oyundaki enstrümanları otomatik olarak çalmak için tasarlandı. 
+## Bu uygulama, Steam platformundaki [Sky: Children of the Light](https://store.steampowered.com/app/2325290/Sky_Children_of_the_Light/) isimli oyundaki enstrümanları otomatik olarak çalmak için tasarlandı. 
 
 ## YouTube'da izleyin👁️↓
 [![watch on YT](https://i3.ytimg.com/vi/ZUfYclM6AHA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZUfYclM6AHA)
@@ -12,12 +12,16 @@
 #### Programın çalışabilmesi için:
 * [Python](https://www.python.org)'un bilgisayarınızda yüklü olduğundan emin olun.
 ### Aşağıdaki kütüphaneleri yüklemeniz gerekmektedir:
-* keyboard
-* requests
-* pygetwindow
+* keyboard (tuşlara basmak için)
+* requests (güncellemeleri denetlemek için)
+* pygetwindow (pencerelere odaklanmak için)
+* rich (İlerleme çubuğu için)
 
 Bu kütüphaneleri komut satırı arayüzünde(CMD) aşağıdaki komutları kullanarak yükleyin:
 
+```cmd
+pip install rich
+```
 
 ```cmd
 pip install pygetwindow
@@ -31,13 +35,13 @@ pip install keyboard
 pip install requests
 ```
 
-## Kullanım:
+# Kullanım:
 
-Program ilk açıldığında sizden dil seçmenizi isteyecektir.
+- Program ilk açıldığında sizden dil seçmenizi isteyecektir.
 
-Sadece Türkçe ve ingilizce dil destekleri mevcut, eğer başka dil için çeviri yapmak isterseniz benimle iletişime geçin. Discord: luvica0
+- Sadece Türkçe ve ingilizce dil destekleri mevcut, eğer başka dil için çeviri yapmak isterseniz benimle iletişime geçin. Discord: luvica0
 
-### Programı hangi ortamda kullanacağınıza bağlı olarak tuş kombinasyonunu seçmeniz gerekmektedir:
+### Programı hangi ortamda kullanacağınıza bağlı olarak tuş kombinasyonun girmeniz gerekmektedir:
 
 #### 1. Eğer `Sky Music Nightly` sitesindeki enstrümanları kullanıyorsanız, şu tuş kombinasyonunu kullanabilirsiniz:
 
@@ -69,8 +73,11 @@ q w e r t a s d f g z x c v b
     * Nota dosyanızda sadece 1 katman olduğundan emin olun
 
 * ### Eğer notalarınız yoksa
-    * `Sky-Auto Instrument Player.py` ile aynı dizinde bulunan `SongDatabase` klasöründen istediğiniz müzik notalarını kopyalayıp `New Sheets` klasörüne yapıştırın. Sonrasında Programı açın veya yeniden başlatın.
+    * `SongDatabase` klasöründen istediğiniz müzik notalarını kopyalayıp `Sheets` klasörüne yapıştırın. Sonrasında Programı yeniden başlatın.
     * Alternatif olarak [Sky & Genshin Music Nightly](https://discord.gg/Arsf65YYHq) Discord kanalına katılın, orada [share-your-songs-sm](https://discordapp.com/channels/706253814910550118/706508410329235526) veya [song-library-requests-sm](https://discordapp.com/channels/706253814910550118/730884082258673715) kanallarında arama yaparak müzik bulabilirsiziz, orada binlerce müzik var!
+
+* ### Müzik nota dosyasını nasıl düzenleyebilirim veya.. Müzik nota dosyası oluşturabilir miyim?
+    * Bununların hepsinin en kolay yolu [Sky Music Nightly](https://specy.github.io/skyMusic)
 
 * ### Desteklenen nota formatları
     * `.txt`

@@ -1,7 +1,7 @@
 #### Other Languages: [Türkçe](https://github.com/MERT-CKR/Sky-Instrument-Player/blob/main/README-TR.md)
 
 ---
-## This application is designed to automatically play instruments in the game "Sky: Children of the Light" on the Steam platform.
+## This application is designed to automatically play instruments in the game [Sky: Children of the Light](https://store.steampowered.com/app/2325290/Sky_Children_of_the_Light/) on the Steam platform.
 
 ## 👁 it on Youtube ↓
 [![watch on YT](https://i3.ytimg.com/vi/ZUfYclM6AHA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZUfYclM6AHA)
@@ -11,12 +11,16 @@
 #### To run the program:
 * Ensure that [Python](https://www.python.org) is installed on your computer.
 #### You need to install the following libraries:
-* pygetwindow
-* keyboard
-* requests
+* keyboard (press keys)
+* requests (check updates)
+* pygetwindow (focus windows)
+* rich (show progresbar)
 
 paste the fallowing codes to your terminal (CMD)
 
+```cmd
+pip install rich
+```
 
 ```cmd
 pip install pygetwindow
@@ -30,13 +34,13 @@ pip install keyboard
 pip install requests
 ```
 
-## Usage:
+# Usage:
 
-When you first open the program, it will ask you to select a language.
+- When you first open the program, it will ask you to select a language.
 
-Only Turkish and English language support is available. If you would like to translate for another language, please contact me. Discord: luvica0
+- Only Turkish and English language support is available. If you would like to translate for another language, please contact me. Discord: luvica0
 
-### Depending on the environment where you will use the program, you need to select the key combination:
+### Depending on the environment where you will use the program, you need to enter the key combinations:
 
 #### 1. If you are using the instruments on the `Sky Music Nightly`, you can use the following key combination:
 `
@@ -69,8 +73,12 @@ q w e r t a s d f g z x c v b
 
 
 * ### If you don't have sheets
-    * Copy the sheets you want into the `SongDatabase` folder and paste them into the `Sheets` folder. Then Restart the program.
+    * Copy the sheets you want into the `SongDatabase` folder located in the same directory as `Sky-Auto Instrument Player.py` and paste them into the `New Sheets` folder. Then Restart or open the program.
     * Alternatively, join the [Sky & Genshin Music Nightly](https://discord.gg/Arsf65YYHq) Discord server, where you can find music by searching in the [share-your-songs-sm](https://discordapp.com/channels/706253814910550118/706508410329235526) or [song-library-requests-sm](https://discordapp.com/channels/706253814910550118/730884082258673715) channels—there are thousands of songs available!
+
+
+* ### How can I edit a music sheet file or.. Can i create music sheet ?
+    * The easiest way to do all of this is [Sky Music Nightly](https://specy.github.io/skyMusic)
 
 * ### Supported Sheet formats
     * `.txt`
@@ -85,7 +93,6 @@ q w e r t a s d f g z x c v b
 ---
 ### Didn't you find what you were looking for?
 * Reach me on Discord: luvica0
-
 
 
 
