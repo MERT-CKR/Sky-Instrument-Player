@@ -83,8 +83,8 @@ q w e r t a s d f g z x c v b
 ---
 
 ### Aradığınız şeyi bulamadınız mı?
-* `Auto-Insturment Player` için Wiki üzerinde çalışıyorum 
 * Discorddan bana ulaşın: luvica0
+
 
 
 
