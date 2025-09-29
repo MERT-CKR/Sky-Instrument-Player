@@ -1,16 +1,20 @@
 {
   "translations": {
-    "key_error1":{
-      "tr":"Her item 'time' ve 'key' ikilisine sahip olmalıdır. Geçersiz dosya içeriği",
-      "en":"All item must have 'time' and 'key' pair, wrong format. Invalid file content!!"
+    "key_error":{
+      "tr":"Her item 'time' ve 'key' ikilisine sahip olmalıdır. Geçersiz dosya içeriği!!",
+      "en":"All items must have 'time' and 'key' pair, wrong format. Invalid file content!!"
     },
-    "tutorial1": {
-      "tr": "Sky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz veya aşağıdakileri kullan\n",
-      "en": "When you equip your instrument in Sky, type the letters on the keys in order here or use the following\n"
+    "add_sky_layout": {
+      "tr": "\nSky'da enstrümanını kuşandığında tuşların üzerindeki harfleri sırayla buraya yaz. (Enter'a basma, sadece harflere bas)\n",
+      "en": "\nWhen you equip your instrument in Sky, type the letters on the keys in order here. (Don't press Enter, just press the keys)\n"
     },
-    "tutorial2": {
-      "tr": "Önerilen tuş atamaları:\nq w e r t a s d f g z x c v b\nBu tuşlarla bu sitedeki enstrümanları kullanabilirsiniz: https://specy.github.io/skyMusic \n\nTürkçe klavye için Önerilen tuş atamaları:\ny u ı o p h j k l ş n m ö ç b",
-      "en": "Suggested key bindings:\nq w e r t a s d f g z x c v b\nYou can use the instruments on this site with these keys: https://specy.github.io/skyMusic"
+    "pass_without_layout": {
+      "tr": "Eğer Oyunda değil de sadece 'Sky Music Nightly' Uygulamasında kullanacaksan hiçbir şey yazmadan Enter'e bas\n",
+      "en": "If you are only going to use it in the 'Sky Music Nightly' App and not in the Game, press Enter without typing anything.\n"
+    },
+    "select_layout": {
+      "tr": "Müziği çalmak istediğiniz uygulamanın tuş düzenini seçin",
+      "en": "Select the key layout of the app you want to play music in"
     },
     "starting": {
       "tr": "Başlıyor...",
@@ -32,17 +36,9 @@
       "tr": "İlk açılış algılandı\n",
       "en": "First opening detected\n"
     },
-    "unknown_format": {
-      "tr": "* için hata: JSON dosyası beklenilen formatta değil!",
-      "en": "Error for *: JSON file is not in the expected format!"
-    },
-    "unknown_format2": {
-      "tr": "* için hata: 'songNotes' anahtarı JSON dosyasında bulunamadı, yanlış veya hatalı dosya olabilir!!",
-      "en": "Error for * : There aren't 'songNotes' key in json file. Invalid file content!!"
-    },
     "choose_music": {
-      "tr": "Listeden bir Müzik seçin:",
-      "en": "Choose music from list:"
+      "tr": "Listeden bir Müzik seçin:\n>> ",
+      "en": "Choose music from list:\n>> "
     },
     "choose_in_list": {
       "tr": "\nLütfen sadece listede olan sayılardan seçin!! \n",
@@ -53,8 +49,8 @@
       "en": "Invalid character!!: *"
     },
     "restart": {
-      "tr": "Programdan çıkmak için 0'a basın:\nDevam Etmek için ise Enter'e basın\n",
-      "en": "Press 0 to exit the program \nPress Enter to continue\n"
+      "tr": "Devam etmek için Enter'e basın\n",
+      "en": "Press Enter to continue\n"
     },
     "length_err":{
       "tr":"Boşluklarla ayrılmış şekilde 15 karakter girmelisin",
@@ -68,23 +64,7 @@
       "tr":"Buraya sadece sayı girebilirsin!!\n",
       "en":"You can only enter numbers here!!\n"
     },
-    "unwanted_format":{
-      "tr":"Dosya listeye eklenemedi!! Kullanılamayan uzantı: (*) \nkullanılabilir uzantılar: .skysheet, .txt, .json\n\n",
-      "en":"The file couldn't be added to the list!! Unuseable extension: (*)\nUseable extensions: .skysheet, .txt, .json\n\n"
-    },
-    "without_extension":{
-      "tr":"Bu dosyanın uzantısı yok. Yanlış girdi \nkullanılabilir uzantılar: .skysheet, .txt, .json\n\n",
-      "en":"This file doesn't have extension. Wrong input \nAvailable extensions: .skysheet, .txt, .json\n\n"
-    },
-    "added_list":{
-      "tr":"* listeye eklendi!\n",
-      "en":"* added to list!\n"
-    },
-    "unicode_error":{
-      "tr":"* isimli dosyanın içeriğinde bilinmeyen karakter bulunuyor onları kaldırıp tekrar dene!\n",
-      "en":"The file named * contains unknown characters, remove them and try again!\n"
-    },
-    "Checking_updates":{
+    "checking_updates":{
       "tr":"Güncellemeler kontrol ediliyor...",
       "en":"Checking for updates..."
     },
@@ -92,9 +72,9 @@
       "tr":"Bağlantı hatası",
       "en":"Connection error"
     },
-    "using_last_version":{
-      "tr":"Zaten son sürümü kullanıyorsunuz.",
-      "en":"You are already using the latest version"
+    "using_latest_version":{
+      "tr":"Zaten son sürümü kullanıyorsunuz.\n",
+      "en":"You are already using the latest version\n"
     },
     "new_version_available":{
       "tr":"Yeni versiyon bulundu! Kullandığın versiyon: *current_rel Yeni versiyon: *new_rel \nBuradan güncelleyin: \n>> https://github.com/MERT-CKR/Sky-Instrument-Player \nCode>Download ZIP (eski notalarını kaybetmemek için eski programdaki Sheet ve new sheet klasörlerini alabilirsiniz)!!! \n",
@@ -103,6 +83,34 @@
     "version_could_not_be_checked":{
       "tr":"Güncelleme kontrol edilirken bir sorun oluştu.",
       "en":"A problem occurred while checking for updates"
+    },
+    "changelog":{
+      "tr":"Değişenler listesi:",
+      "en":"Changelog:"
+    },
+    "old_format":{
+      "tr":"Eski nota formatı bulundu. Düzeltiliyor...",
+      "en":"Old sheet format detected. Fixing..."
+    },
+    "old_format_fixed":{
+      "tr":"Eski nota formatı düzeltildi.",
+      "en":"Old sheet format fixed."
+    },
+    "focus_lost":{
+      "tr":"Pencere odağı kaybedildi, program durduruldu.",
+      "en":"Window focus lost, program stoped."
+    },
+    "choose_window":{
+      "tr":"Listeden bir pencere seçin ",
+      "en":"Choose a window from list"
+    },
+    "give_focus":{
+      "tr":"Müzik çalmak istediğiniz ortama odak verin.",
+      "en":"Focus on the environment where you want to play music."
+    },
+    "continue_without_selection":{
+      "tr":"Seçim yapmadan devam et",
+      "en":"Continue without selection"
     }
   }
 }
