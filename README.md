@@ -17,8 +17,9 @@
 
 paste the fallowing codes to your terminal (CMD)
 
+
 ```cmd
-pip install pandas
+pip install pygetwindow
 ```
 
 ```cmd
@@ -33,7 +34,7 @@ pip install requests
 
 When you first open the program, it will ask you to select a language.
 
-Only English and Turkish languages supported
+Only Turkish and English language support is available. If you would like to translate for another language, please contact me. Discord: luvica0
 
 ### Depending on the environment where you will use the program, you need to select the key combination:
 
@@ -43,34 +44,33 @@ q w e r t a s d f g z x c v b
 `
 
 #### 2. If you are using the instrument in the game:
-* When you equip the instrument in the game, enter the letters displayed on the buttons, separated by spaces. 
-
-* If there are dot or comma characters among them, change these to another key from Settings > Controls.
+* When you equip the instrument in the game, enter the letters written on the buttons one by one. 
 
 
-
-#### If you have downloaded the application, you can also test it on [Sky Music Nightly](https://specy.github.io/skyMusic/) without the game.
+### If you have downloaded the application, you can also test it on [Sky Music Nightly](https://specy.github.io/skyMusic/) without the game.
 
 
 ---
 
 > [!IMPORTANT]
-> Select your music from the list and focus on the window where you will play the instrument. You need to be careful here; if you focus elsewhere, random keys will be pressed, which may trigger unwanted situations.
-For example, if you focus on a text document, it will type there. Therefore, make sure to keep the focus on the target window during the music playing process. To cancel the music playing process, press and hold the `"` key untill music stop.
+> The program can now intelligently suggest which window to play music in. Playback stops when you focus on another window. This prevents unwanted shortcuts from being triggered by random keystrokes. If your game window doesn't appear in the list, please contact me. There may be issues with other languages.
 
 ---
 ### To change the language selection or key selection:
-* Run the `reset key settings.py` file.
+* Run the `reset key layouts.py` file.
+
+
 
 ## How to add other sheet musics to the list?
 
 * ### If you already have sheets 
-    * Just copy them `New Sheets` folder
+    * Just copy them `Sheets` folder
     * Ensure your file includes only 1 layer to play
 
 
 * ### If you don't have sheets
     * Copy the sheets you want into the `SongDatabase` folder located in the same directory as `Sky-Auto Instrument Player.py` and paste them into the `New Sheets` folder. Then Restart or open the program.
+    * Alternatively, join the [Sky & Genshin Music Nightly](https://discord.gg/Arsf65YYHq) Discord server, where you can find music by searching in the [share-your-songs-sm](https://discordapp.com/channels/706253814910550118/706508410329235526) or [song-library-requests-sm](https://discordapp.com/channels/706253814910550118/730884082258673715) channels—there are thousands of songs available!
 
 * ### Supported Sheet formats
     * `.txt`
@@ -79,21 +79,13 @@ For example, if you focus on a text document, it will type there. Therefore, mak
     
 
 
-* If you copy your Sheets into `New Sheets` folder and you can't find Original files. Then you can find them at the folder named `Raw Sheets`
-
-* If there is no folder named `New Sheets` or `Raw Sheets` it will be automatically created when you run the application.
-
-* It is not recommended to add too many files at once. Also, if the files you put in the `New Sheets` folder contain Japanese or other language characters, it may give an error. If you remove these characters and try again, it should work.
-
-
 * The `Sheets` folder contains the music in the list. If you wish, you can rename or remove them.
 
 
 ---
 ### Didn't you find what you were looking for?
-* working on a Wiki For `Auto-Instrument Player`
 * Reach me on Discord: luvica0
-### Note from developer
-* I simplified the note system, increased performance and added many new features, but unfortunately these failed the testing phase because the game has problems when pressing several keys at the same time. Maybe I will add a mouse click mode in the future, and this can also be compiled on mobile. I plan to stop developing this for now.
+
+
 
 
