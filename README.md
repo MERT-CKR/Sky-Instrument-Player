@@ -69,7 +69,7 @@ q w e r t a s d f g z x c v b
 
 
 * ### If you don't have sheets
-    * Copy the sheets you want into the `SongDatabase` folder located in the same directory as `Sky-Auto Instrument Player.py` and paste them into the `New Sheets` folder. Then Restart or open the program.
+    * Copy the sheets you want into the `SongDatabase` folder and paste them into the `Sheets` folder. Then Restart the program.
     * Alternatively, join the [Sky & Genshin Music Nightly](https://discord.gg/Arsf65YYHq) Discord server, where you can find music by searching in the [share-your-songs-sm](https://discordapp.com/channels/706253814910550118/706508410329235526) or [song-library-requests-sm](https://discordapp.com/channels/706253814910550118/730884082258673715) channels—there are thousands of songs available!
 
 * ### Supported Sheet formats
@@ -85,6 +85,7 @@ q w e r t a s d f g z x c v b
 ---
 ### Didn't you find what you were looking for?
 * Reach me on Discord: luvica0
+
 
 
 
