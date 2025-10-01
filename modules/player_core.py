@@ -95,5 +95,5 @@ def playMusic(sheet, key_layout):
         
 
     t2 = time.time()
-    playtime = round(t2 - t1- 250, 1)
+    playtime = round(t2 - t1, 1)
     print(_("playback_duration").replace("*", str(playtime)))

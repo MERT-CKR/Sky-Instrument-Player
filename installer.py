@@ -1,6 +1,8 @@
-import subprocess, sys, os
-import pkg_resources
+import subprocess, sys#, os
 import time
+import pkg_resources
+from modules.utils import print_green
+
 req_path ="modules/requirements.txt"
 def main():
     with open(req_path) as f:
@@ -17,12 +19,15 @@ def main():
     if missing:
         print("Missing package:", missing)
         subprocess.check_call([sys.executable, "-m", "pip", "install", *missing])
-    else:
-        script_path = os.path.abspath(__file__)
-        print("Done, now You can open Sky-Auto Instrument Player.py")
+        print_green("Done, Its ready")
         time.sleep(2)
-        os.remove(req_path)
-        os.remove(script_path)
+        
+    else:
+        print_green("Done, Its ready")
+        time.sleep(2)
+        # script_path = os.path.abspath(__file__)
+        # os.remove(req_path)
+        # os.remove(script_path)
 
 if __name__ == "__main__":
     main()
