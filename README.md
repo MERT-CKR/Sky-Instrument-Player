@@ -16,23 +16,7 @@
 * pygetwindow (focus windows)
 * rich (show progresbar)
 
-paste the fallowing codes to your terminal (CMD)
-
-```cmd
-pip install rich
-```
-
-```cmd
-pip install pygetwindow
-```
-
-```cmd
-pip install keyboard
-```
-
-```cmd
-pip install requests
-```
+Just run `install.py` and it will do the work for you
 
 # Usage:
 
@@ -93,6 +77,7 @@ q w e r t a s d f g z x c v b
 ---
 ### Didn't you find what you were looking for?
 * Reach me on Discord: luvica0
+
 
 
 
