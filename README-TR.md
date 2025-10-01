@@ -17,23 +17,8 @@
 * pygetwindow (pencerelere odaklanmak için)
 * rich (İlerleme çubuğu için)
 
-Bu kütüphaneleri komut satırı arayüzünde(CMD) aşağıdaki komutları kullanarak yükleyin:
+sadece `install.py` dosyasını çalıştırın, o sizin için işi halledecek
 
-```cmd
-pip install rich
-```
-
-```cmd
-pip install pygetwindow
-```
-
-```cmd
-pip install keyboard
-```
-
-```cmd
-pip install requests
-```
 
 # Kullanım:
 
@@ -91,6 +76,7 @@ q w e r t a s d f g z x c v b
 
 ### Aradığınız şeyi bulamadınız mı?
 * Discorddan bana ulaşın: luvica0
+
 
 
 
