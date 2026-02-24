@@ -25,7 +25,7 @@ Play music automatically in **Sky: Children of the Light** using sheet files!
 
 ### Option 1: Executable (Easiest)
 
-1. Download `SkyAutoPlayer.exe` from the [**Releases**](https://github.com/MERT-CKR/Sky-AutoPlayer/releases) page  
+1. Download `SkyAutoPlayer.exe` from the [**Releases**](https://github.com/MERT-CKR/Sky-Instrument-Player/releases/tag/Sky-Auto-Instrument-Player) page  
 2. Run the application 
 3. Done!
 
