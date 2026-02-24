@@ -1,0 +1,30 @@
+{
+    "settings": [
+        {
+            "version": "3.0",
+            "changelog": "A full graphical interface is now available! Download the new version and enjoy a much smoother experience \u2014 no more typing commands.",
+            "target_window": "Sky",
+            "hide_stop_hint": false,
+            "active_profile": "Sky Music Nightly",
+            "profiles": {
+                "Sky Music Nightly": {
+                    "key0": "q",
+                    "key1": "w",
+                    "key2": "e",
+                    "key3": "r",
+                    "key4": "t",
+                    "key5": "a",
+                    "key6": "s",
+                    "key7": "d",
+                    "key8": "f",
+                    "key9": "g",
+                    "key10": "z",
+                    "key11": "x",
+                    "key12": "c",
+                    "key13": "v",
+                    "key14": "b"
+                }
+            }
+        }
+    ]
+}
