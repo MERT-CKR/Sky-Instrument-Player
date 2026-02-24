@@ -19,7 +19,6 @@ try:
 except Exception:
     print("Audio init failed")
 
-# ================= CONSTANTS =================
 BG = "#0B0D14"
 SIDEBAR = "#121526"
 BUTTON_BASE = "#3B426A"
@@ -35,7 +34,6 @@ HOLDER_SIZE = 90
 
 UNSTABLE_INSTRUMENTS = ["Drum"]
 
-# 15 tuşlu layout (3 satır × 5 sütun)
 KEY_LAYOUT = [
     ["key0", "key1", "key2", "key3", "key4"],
     ["key5", "key6", "key7", "key8", "key9"],
@@ -59,7 +57,7 @@ def writable_path(filename):
     os.makedirs(app_folder, exist_ok=True)
     return os.path.join(app_folder, filename)
 
-# ================= HELPERS =================
+
 class AnimationState:
     def __init__(self, button, key):
         self.button = button
@@ -148,7 +146,7 @@ class StopHintDialog(ctk.CTkToplevel):
         self.destroy()
         self.on_ok()
 
-# ================= MAIN APP =================
+
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
@@ -257,8 +255,6 @@ class App(ctk.CTk):
             settings = data["settings"][0]
             profile_name = settings.get("active_profile", "Default")
             raw = settings["profiles"].get(profile_name, {})
-            
-            # Eski format (sadece string) veya yeni format (dict) destekle
             self.current_profile = {}
             self.current_profile_scancodes = {}
             for key_id, val in raw.items():
@@ -692,7 +688,6 @@ class App(ctk.CTk):
             
             target_title = self._get_target_window() if mode == "game" else ""
             
-            # Sky format: [{"songNotes": [...]}]
             if isinstance(data, list) and len(data) > 0 and "songNotes" in data[0]:
                 notes = data[0]["songNotes"]
                 self._play_sky_format(notes, mode, target_title)

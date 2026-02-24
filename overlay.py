@@ -23,9 +23,9 @@ KEY_NORMAL = "#bec8ff"
 KEY_ACTIVE = "#6C7CFF"
 TEXT_COLOR = "#101020"
 
-# Yuvarlak köşe yarıçapları
-CORNER_RADIUS = 12  # Butonlar için (daha yuvarlak)
-WINDOW_RADIUS = 16  # Pencere için
+
+CORNER_RADIUS = 12
+WINDOW_RADIUS = 16
 
 
 class Overlay(tk.Tk):
@@ -41,7 +41,6 @@ class Overlay(tk.Tk):
         self.wm_attributes("-alpha", 0.82)
         self.configure(bg=BG_COLOR)
 
-        # Pencereye rounded corner mask uygula
         self._apply_window_mask()
 
         self.canvas = tk.Canvas(
@@ -60,7 +59,6 @@ class Overlay(tk.Tk):
                 ry = (y1 + y2) // 2
                 char = profile.get(key_id, "?")
                 
-                # Rounded rectangle çiz (daha yuvarlak)
                 rect = self._create_rounded_rect(x1, y1, x2, y2, 
                                                   radius=CORNER_RADIUS, 
                                                   fill=KEY_NORMAL)
@@ -79,20 +77,15 @@ class Overlay(tk.Tk):
         self._process_triggers()
 
     def _apply_window_mask(self):
-        """Pencereye yuvarlak köşe maskesi uygula"""
         try:
-            # Windows için rounded window
             if hasattr(self, 'wm_attributes'):
                 self.update_idletasks()
-                # DWM rounded corners (Windows 11)
                 try:
                     import ctypes
                     from ctypes import wintypes
                     
                     hwnd = ctypes.windll.user32.GetParent(self.winfo_id())
                     
-                    # DWMWA_WINDOW_CORNER_PREFERENCE = 33
-                    # DWMWCP_ROUND = 2
                     DWMWA_WINDOW_CORNER_PREFERENCE = 33
                     DWMWCP_ROUND = 2
                     
@@ -103,15 +96,12 @@ class Overlay(tk.Tk):
                         ctypes.sizeof(ctypes.c_int)
                     )
                 except Exception:
-                    # Windows 10 veya eski - PIL ile mask
                     self.after(100, self._apply_pill_mask)
         except Exception as e:
             print(f"Window mask error: {e}")
 
     def _apply_pill_mask(self):
-        """PIL ile rounded corner mask (fallback)"""
         try:
-            # Mask image oluştur
             mask = Image.new('L', (PANEL_W, PANEL_H), 0)
             draw = ImageDraw.Draw(mask)
             draw.rounded_rectangle(
@@ -120,7 +110,6 @@ class Overlay(tk.Tk):
                 fill=255
             )
             
-            # Alpha channel olarak uygula
             self.wm_attributes("-transparentcolor", "white")
             
         except Exception as e:

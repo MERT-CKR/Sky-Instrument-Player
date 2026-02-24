@@ -38,7 +38,7 @@ GITHUB_REPO_URL = "https://github.com/MERT-CKR/Sky-AutoPlayer"
 DISCORD_URL = "https://discord.gg/luvica0"
 GITHUB_SPONSORS = "https://github.com/sponsors/MERT-CKR"
 
-# 15 tuş layout
+
 KEY_LAYOUT_15 = [
     ["key0", "key1", "key2", "key3", "key4"],
     ["key5", "key6", "key7", "key8", "key9"],
@@ -163,7 +163,6 @@ class ScanCodeDialog(ctk.CTkToplevel):
             self.status_label.configure(text="Invalid key! Press a single character key.", text_color=DANGER)
             return
         
-        # Zaten kullanılmış mı kontrol et
         used_chars = [v["char"] for v in self.scanned_keys.values()]
         if char in used_chars:
             self.status_label.configure(text=f"Key '{char}' already used!", text_color=WARNING)
@@ -172,7 +171,6 @@ class ScanCodeDialog(ctk.CTkToplevel):
         flat_keys = [k for row in KEY_LAYOUT_15 for k in row]
         key_id = flat_keys[self.current_index]
         
-        # Hem char hem scan_code kaydet
         try:
             scan_code = keyboard.key_to_scan_codes(char)[0]
         except Exception:
