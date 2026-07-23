@@ -120,4 +120,20 @@ Apache License Version 2.0
 ---
 
 
+# Didn't find what you were looking for?
 
+We're here to help. Here's how you can reach us:
+
+---
+
+### 🐛 Report an issue
+If you're using **GitHub**, feel free to open an issue in the relevant repository.  
+We'll take a look as soon as possible.
+
+### 💬 Ask developer on Discord
+For faster feedback or direct support, you can reach me on Discord:  
+**`luvica0`**
+
+---
+
+> Your feedback matters — don't hesitate to get in touch!
